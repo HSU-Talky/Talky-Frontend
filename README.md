@@ -37,7 +37,7 @@ Talky는 언어장애인을 위한 자동 문장 추천 앱서비스입니다.
 
 ### 🔹 코드 규칙
 
-- 이름 짓기: 변수/함수 camelCase | 컴포넌트 PascalCase | 폴더 소문자
+- 이름 짓기: 변수/함수 camelCase | 컴포넌트 PascalCase
 - 코드 자동 정렬 Prettier 사용하기
 - 주석 친절하게 달기
 
