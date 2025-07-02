@@ -1,4 +1,5 @@
 import { View, Image } from "react-native";
+import { COLORS } from "../styles/color";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TalkTalkScreen from "../screens/talkTalkScreen/TalkTalkScreen";
 import PracticeScreen from "../screens/practiceScreen/PracticeScreen";
@@ -20,7 +21,7 @@ export default function UserTabNavigator() {
         tabBarStyle: {
           height: 89,
           paddingTop: 10,
-          backgroundColor: "#FFEC9F",
+          backgroundColor: COLORS.MAIN_YELLOW2,
         },
         tabBarIcon: ({ focused }) => {
           let icon;

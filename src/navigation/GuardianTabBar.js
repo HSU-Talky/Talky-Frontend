@@ -1,4 +1,5 @@
 import { View, Image } from "react-native";
+import { COLORS } from "../styles/color";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MapScreen from "../screens/mapScreen/MapScreen";
 import StatisticsScreen from "../screens/statisticsScreen/StatisticsScreen";
@@ -20,7 +21,7 @@ const GuardianTabNavigator = () => {
         tabBarStyle: {
           height: 89,
           paddingTop: 10,
-          backgroundColor: "#FFEC9F",
+          backgroundColor: COLORS.MAIN_YELLOW2,
         },
         tabBarIcon: ({ focused }) => {
           let icon;
