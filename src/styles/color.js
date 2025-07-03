@@ -1,4 +1,6 @@
 export const COLORS = {
+  BACKGROUND: "#FFFEF6", // 배경색
+
   MAIN_YELLOW1: "#FFF3C7", // 연한 노랑
   MAIN_YELLOW2: "#FFEC9F", // 중간 노랑
   MAIN_YELLOW3: "#FFD321", // 진한 노랑
