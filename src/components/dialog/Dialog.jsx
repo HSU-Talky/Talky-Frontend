@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Modal, StyleSheet } from "react-native";
+import { View, Text, Modal, StyleSheet } from "react-native";
+import DialogButton from "./DialogButton";
 
 const Dialog = ({
   visible = false,
@@ -34,20 +35,22 @@ const Dialog = ({
           <View style={styles.buttonContainer}>
             {/* 버튼들 */}
             {cancelText && (
-              <TouchableOpacity
+              <DialogButton
                 onPress={onCancel}
-                style={[styles.button, styles.cancelButton]}
-              >
-                <Text style={styles.cancelButtonText}>{cancelText}</Text>
-              </TouchableOpacity>
+                text={cancelText}
+                backgroundColor="#ECECEC"
+                pressedColor="#8B8B8B"
+                textWeight="400"
+              />
             )}
             {confirmText && (
-              <TouchableOpacity
+              <DialogButton
                 onPress={onConfirm}
-                style={[styles.button, styles.confirmButton]}
-              >
-                <Text style={styles.confirmButtonText}>{confirmText}</Text>
-              </TouchableOpacity>
+                text={confirmText}
+                backgroundColor="#FFAC90"
+                pressedColor="#FF8860"
+                textWeight="600"
+              />
             )}
           </View>
         </View>
@@ -112,29 +115,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     gap: 33.33,
-  },
-  button: {
-    width: 99.33,
-    height: 34,
-    borderRadius: 6.67,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  cancelButton: {
-    backgroundColor: "#8B8B8B",
-  },
-  confirmButton: {
-    backgroundColor: "#FF8860",
-  },
-  cancelButtonText: {
-    color: "white",
-    fontSize: 12,
-    fontWeight: 400,
-  },
-  confirmButtonText: {
-    color: "white",
-    fontSize: 12,
-    fontWeight: 600,
   },
 });
 
