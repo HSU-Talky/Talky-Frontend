@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Modal, StyleSheet } from "react-native";
 import DialogButton from "./DialogButton";
+import { COLORS } from "../../styles/color";
 
 const Dialog = ({
   visible = false,
@@ -38,8 +39,8 @@ const Dialog = ({
               <DialogButton
                 onPress={onCancel}
                 text={cancelText}
-                backgroundColor="#ECECEC"
-                pressedColor="#8B8B8B"
+                backgroundColor={COLORS.CANCLE_NORMAL}
+                pressedColor={COLORS.CANCLE_CLICK}
                 textWeight="400"
               />
             )}
@@ -47,8 +48,8 @@ const Dialog = ({
               <DialogButton
                 onPress={onConfirm}
                 text={confirmText}
-                backgroundColor="#FFAC90"
-                pressedColor="#FF8860"
+                backgroundColor={COLORS.ERROR_NORMAL}
+                pressedColor={COLORS.ERROR__CLICK}
                 textWeight="600"
               />
             )}
@@ -67,12 +68,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   dialog: {
-    backgroundColor: "white",
+    backgroundColor: COLORS.WHITE,
     borderRadius: 16.67,
     padding: 19,
     width: 273.33,
     height: 180.67,
-    shadowColor: "#000",
+    shadowColor: COLORS.BLACK,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     shadowRadius: 16.67,
     elevation: 5,
     borderWidth: 2.67,
-    borderColor: "#FFEC9F",
+    borderColor: COLORS.MAIN_YELLOW2,
     gap: 26,
   },
   header: {
@@ -91,8 +92,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 8,
     fontWeight: 400,
-    color: "#464646",
-    backgroundColor: "#FFEC9F",
+    color: COLORS.SUB_BLACK,
+    backgroundColor: COLORS.MAIN_YELLOW2,
     paddingHorizontal: 6.67,
     paddingVertical: 3.33,
     borderRadius: 16.67,
@@ -103,13 +104,13 @@ const styles = StyleSheet.create({
   message: {
     fontSize: 14,
     fontWeight: 500,
-    color: "#2B2B2B",
+    color: COLORS.BLACK,
     marginBottom: 5.33,
   },
   subMessage: {
     fontSize: 12,
     fontWeight: 400,
-    color: "#464646",
+    color: COLORS.SUB_BLACK,
   },
   buttonContainer: {
     flexDirection: "row",

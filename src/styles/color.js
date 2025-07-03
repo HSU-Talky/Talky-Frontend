@@ -8,6 +8,7 @@ export const COLORS = {
 
   BLACK: "#2B2B2B",
   WHITE: "#FFFFFF",
+  SUB_BLACK: "#464646",
 
   CANCLE_NORMAL: "#E5E5E5", // 취소
   CANCLE_CLICK: "#8B8B8B", // 취소 클릭

@@ -1,13 +1,14 @@
 import React from "react";
 import { Pressable, Text, StyleSheet } from "react-native";
+import { COLORS } from "../../styles/color";
 
 const DialogButton = ({
   onPress,
   text,
-  backgroundColor = "#ECECEC",
-  pressedColor = "#8B8B8B",
-  textColor = "black",
-  pressedTextColor = "white",
+  backgroundColor = COLORS.CANCLE_NORMAL,
+  pressedColor = COLORS.CANCLE_CLICK,
+  textColor = COLORS.BLACK,
+  pressedTextColor = COLORS.WHITE,
   textWeight = "400",
   style,
 }) => {
