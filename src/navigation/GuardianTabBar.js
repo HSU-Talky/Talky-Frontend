@@ -9,6 +9,7 @@ import MAP_ICON from "../assets/tabbar/practice.png"; //변경예정
 import STATISTICS_ICON from "../assets/tabbar/talktalk.png"; //변경예정
 import SETTING_ICON from "../assets/tabbar/setting.png";
 import Logo from "../components/Logo";
+import SosCall from "../components/SosCall";
 
 const Tab = createBottomTabNavigator();
 
@@ -67,7 +68,13 @@ const GuardianTabNavigator = () => {
     >
       <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Statistics" component={StatisticsScreen} />
-      <Tab.Screen name="GuardianSetting" component={GuardianSettingScreen} />
+      <Tab.Screen
+        name="GuardianSetting"
+        component={GuardianSettingScreen}
+        options={{
+          headerRight: () => <SosCall />,
+        }}
+      />
     </Tab.Navigator>
   );
 };
