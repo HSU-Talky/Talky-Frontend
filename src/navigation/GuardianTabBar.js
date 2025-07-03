@@ -18,7 +18,7 @@ const GuardianTabNavigator = () => {
     <Tab.Navigator
       initialRouteName="Statistics"
       screenOptions={({ route }) => ({
-        headerTitle: () => <Logo top="20" />,
+        headerTitle: () => <Logo top="50" />,
         headerTitleAlign: "center",
         headerStyle: {
           backgroundColor: COLORS.BACKGROUND,
