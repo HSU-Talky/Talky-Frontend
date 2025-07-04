@@ -1,4 +1,6 @@
 export const COLORS = {
+  BACKGROUND: "#FFFEF6", // 배경색
+
   MAIN_YELLOW1: "#FFF3C7", // 연한 노랑
   MAIN_YELLOW2: "#FFEC9F", // 중간 노랑
   MAIN_YELLOW3: "#FFD321", // 진한 노랑
@@ -6,6 +8,7 @@ export const COLORS = {
 
   BLACK: "#2B2B2B",
   WHITE: "#FFFFFF",
+  SUB_BLACK: "#464646",
 
   CANCLE_NORMAL: "#E5E5E5", // 취소
   CANCLE_CLICK: "#8B8B8B", // 취소 클릭

@@ -8,6 +8,8 @@ import UserSettingScreen from "../screens/userSettingScreen/UserSettingScreen";
 import PRACTICE_ICON from "../assets/tabbar/practice.png";
 import TALKTALK_ICON from "../assets/tabbar/talktalk.png";
 import SETTING_ICON from "../assets/tabbar/setting.png";
+import Logo from "../components/Logo";
+import SosCall from "../components/SosCall";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,7 +18,16 @@ export default function UserTabNavigator() {
     <Tab.Navigator
       initialRouteName="Talk"
       screenOptions={({ route }) => ({
-        headerShown: false,
+        headerTitle: () => <Logo top="50" />,
+        headerTitleAlign: "center",
+        headerStyle: {
+          backgroundColor: COLORS.BACKGROUND,
+          height: 98.67,
+          elevation: 0, // 그림자 제거
+          shadowOpacity: 0,
+          borderBottomWidth: 0,
+        },
+
         tabBarShowLabel: false, // 아이콘만
         tabBarStyle: {
           height: 89,
@@ -56,7 +67,13 @@ export default function UserTabNavigator() {
       })}
     >
       <Tab.Screen name="Practice" component={PracticeScreen} />
-      <Tab.Screen name="Talk" component={TalkTalkScreen} />
+      <Tab.Screen
+        name="Talk"
+        component={TalkTalkScreen}
+        options={{
+          headerRight: () => <SosCall />,
+        }}
+      />
       <Tab.Screen name="UserSetting" component={UserSettingScreen} />
     </Tab.Navigator>
   );
