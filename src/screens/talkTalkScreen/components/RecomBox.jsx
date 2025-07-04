@@ -6,7 +6,7 @@ export const RecomBox = () => {
         <View style = { styles.container }>
             <View style = { styles.textContainer }>
                 <View style = { styles.RecomTitle }>
-                    <Text style = { styles.TitleText}>
+                    <Text style = { styles.TitleText }>
                         추천 문장 몇 개 갖고 왔는데, 골라 봐!
                     </Text>
                 </View>
@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         backgroundColor: "#FFD321",
         borderRadius: 16.67,     
-        paddingHorizontal: 6.67,
-        paddingVertical: 10
+        paddingHorizontal: 10,
+        paddingVertical: 6.67
     },
 
     TitleText: {
