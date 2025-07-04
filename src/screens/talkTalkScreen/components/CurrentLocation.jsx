@@ -1,5 +1,5 @@
 import { CurrentBox } from "./CurrentBox";
-import LOCATION from "../../../assets/talktalk/location.png";
+import LOCATION from "../../../assets/images/talktalk/location.png";
 
 export default function CurrentLocation() {
     return (

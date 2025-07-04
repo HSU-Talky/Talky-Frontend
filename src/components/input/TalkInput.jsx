@@ -1,7 +1,7 @@
 import { Image, StyleSheet, TextInput, View } from "react-native"
 
-import STAR from "../../assets/talktalk/star.png";
-import SPEAK from "../../assets/talktalk/speak.png";
+import STAR from "../../assets/images/talktalk/star.png";
+import SPEAK from "../../assets/images/talktalk/speak.png";
 
 export const TalkInput = () => {
     return (

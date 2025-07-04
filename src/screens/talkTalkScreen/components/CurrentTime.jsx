@@ -1,5 +1,5 @@
 import { CurrentBox } from "./CurrentBox";
-import TIME from "../../../assets/talktalk/time.png";
+import TIME from "../../../assets/images/talktalk/time.png";
 import { useEffect, useState } from "react";
 
 export default function CurrentTime() {
