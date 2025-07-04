@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import CurrentTime from "./components/CurrentTime";
 import CurrentLocation from "./components/CurrentLocation";
-import { TalkInput } from "../../../components/TalkInput";
+import { TalkInput } from "../../components/input/TalkInput";
 import { RecomBox } from "./components/RecomBox";
 import { Menu } from "./components/Menu";
 
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1, 
     paddingTop: 40, 
+    backgroundColor: "#FFFEF6",
     alignItems: "center", 
     gap: 18
   },
