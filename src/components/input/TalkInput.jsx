@@ -1,18 +1,22 @@
-import { Image, StyleSheet, TextInput, View } from "react-native"
+import { Image, Keyboard, StyleSheet, TextInput, View } from "react-native"
 
 import { InputLeft } from "./InputLeft";
 import { InputRight } from "./InputRight";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 export const TalkInput = () => {
     const [text, setText] = useState("");
     const [focused, setFocused] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
-    let status = "default";
-    if (submitted) status = "submitted"; /* 입력 완료 */
-    else if (text !== "") status = "typing"; /* 입력 중 */
-    else if (focused) status = "focused"; /* 텍스트 입력 없이 포커스 */
+    const [rightPressed, setRightPressed] = useState(false);
+
+    const status = useMemo(() => {
+        if (submitted) return "submitted"; /* 입력 완료 */
+        if (text !== "") return "typing"; /* 입력 중 */
+        if (focused) return "focused"; /* 텍스트 입력 없이 포커스 */
+        return "default";
+    }, [submitted, text, focused]);
 
     const getPlaceholderColor = () => {
         switch (status) {
@@ -25,24 +29,30 @@ export const TalkInput = () => {
         switch (status) {
             case "focused": return "#FFD321CC";
             case "typing": return "#FFD321CC";
-            case "submit": return "#FFD321";
+            case "submitted": return "#FFD321";
             default: return "#FFEC9F33";
         }
+    }
+
+    const handleRightPress = () => {
+        if (status === "submitted") setRightPressed(true);
     }
 
     const onFocus = () => {
         setFocused(true);
         setSubmitted(false);
+        setRightPressed(false);
     }
 
     const onBlur = () => {
         setFocused(false);
-        if (text === "") setSubmitted(false);
+        if (text.trim() === "") setSubmitted(false);
     }
 
     const onChangeText = (value) => {
         setText(value);
-        setSubmitted(false);
+        if (submitted) setSubmitted(false);
+        setRightPressed(false);
     }
 
     const onSubmit = () => {
@@ -56,22 +66,27 @@ export const TalkInput = () => {
             styles.container, 
             status === "focused" && styles.focusContainer,
             status === "typing" && styles.typingContainer,
-            status === "submitted" && styles.submitContainer
+            status === "submitted" && styles.submitContainer,
+            rightPressed && styles.rightPressedContainer
         ]}>
             <InputLeft status = { status }/>
             <TextInput
                 placeholder = "표현하고 싶은 문장을 적어 봐!"
                 placeholderTextColor = { getPlaceholderColor() }
-                style = {[ styles.input, { borderColor: getInputBorderColor() } ]}
+                style = {[ 
+                    styles.input, 
+                    { borderColor: getInputBorderColor() },
+                    rightPressed && styles.inputRightPressed
+                ]}
                 value = { text }
                 onFocus = { onFocus }
                 onBlur = { onBlur }
                 onChangeText = { onChangeText }
                 onSubmitEditing = { onSubmit }
                 returnKeyType = "done"
-                blurOnSubmit = { true }
+                blurOnSubmit = { false }
             />
-            <InputRight status = { status } />
+            <InputRight status = { status } onPress = { handleRightPress }/>
         </View>
     )
 }
@@ -102,6 +117,14 @@ const styles = StyleSheet.create({
     
     submitContainer: {
         backgroundColor: "#FFE890"
+    },
+
+    rightPressedContainer: {
+        backgroundColor: "#FFD321"
+    },
+
+    inputRightPressed: {
+        backgroundColor: "#FFFFFF"
     },
 
     input: {
