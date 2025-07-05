@@ -1,13 +1,23 @@
 import { Image, StyleSheet, TextInput, View } from "react-native"
 
 import STAR from "../../assets/images/talktalk/star.png";
-import SPEAK from "../../assets/images/talktalk/speak.png";
+import DEFAULT from "../../assets/images/talktalk/input_default.png";
+import TYPING from "../../assets/images/talktalk/input_typing.png";
+import SUBMIT from "../../assets/images/talktalk/input_submit.png";
 
-export const InputRight = () => {
+export const InputRight = ({ status }) => {
+    const getImageSource = () => {
+        switch (status) {
+            case "focused": return DEFAULT
+            case "typing": return TYPING
+            case "submit": return SUBMIT
+            default: return DEFAULT
+        }
+    }
     return (
         <View style = { styles.inputRight }>
             <Image
-                source = { SPEAK }
+                source = { getImageSource }
                 style = { styles.RightImage }
             />
         </View>

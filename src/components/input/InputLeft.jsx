@@ -2,7 +2,7 @@ import { Image, StyleSheet, TextInput, View } from "react-native"
 
 import STAR from "../../assets/images/talktalk/star.png";
 
-export const InputLeft = () => {
+export const InputLeft = ({ status }) => {
     return (
         <View style = { styles.inputLeft }>
             <Image
