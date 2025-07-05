@@ -17,8 +17,9 @@ const LoginScreen = () => {
       <View style={{ height: 63 }} />
       {/* 로그인 폼 */}
       <LoginForm />
-      <View style={{ height: 60.67 }} />
+      <View style={{ height: 50.67 }} />
       <GradientLine />
+      <View style={{ height: 56.67 }} />
       <Text style={styles.signText}>Talky에 처음 오셨나요?</Text>
       <View style={{ height: 7 }} />
       {/* 회원가입 버튼 */}
