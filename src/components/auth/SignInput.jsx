@@ -1,33 +1,14 @@
 import React, { useState } from "react";
 import { TextInput, StyleSheet, View, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { getInputStyles } from "../../utils/getInputStyles";
 
 const SignInput = ({ placeholder, secureTextEntry = false }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [text, setText] = useState("");
   const [showPassword, setShowPassword] = useState(false); // 눈 아이콘 토글
 
-  // 배경색
-  const getInputStyles = () => {
-    if (isFocused) {
-      return {
-        backgroundColor: "#FFD32180",
-        iconColor: "#FFD321",
-      };
-    } else if (text.length > 0) {
-      return {
-        backgroundColor: "#FFD321",
-        iconColor: "#FFFFFF",
-      };
-    } else {
-      return {
-        backgroundColor: "#FFF3C7",
-        iconColor: "#FFD321",
-      };
-    }
-  };
-
-  const { backgroundColor, iconColor } = getInputStyles(); // 배경색, 눈아이콘 색
+  const { backgroundColor, iconColor } = getInputStyles(isFocused, text); // 배경색, 눈아이콘 색
   const isPasswordField = secureTextEntry; // 비밀번호 공개여부
 
   return (
@@ -35,7 +16,7 @@ const SignInput = ({ placeholder, secureTextEntry = false }) => {
       <TextInput
         style={styles.textInput}
         placeholder={placeholder}
-        placeholderTextColor="#888"
+        placeholderTextColor="#B1B1B1"
         value={text}
         onChangeText={setText}
         onFocus={() => setIsFocused(true)}
@@ -65,7 +46,7 @@ const styles = StyleSheet.create({
     height: 31.11,
     borderRadius: 16.67,
     justifyContent: "center",
-    paddingHorizontal: 12,
+    paddingHorizontal: 11.33,
     flexDirection: "row",
     alignItems: "center",
   },
