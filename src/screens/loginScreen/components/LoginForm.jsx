@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import SignInput from "../../../components/auth/SignInput";
 import SignButton from "../../../components/auth/SignButton";
 
@@ -14,7 +14,7 @@ const LoginForm = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <SignInput
         placeholder="아이디를 입력해 주세요"
         value={id}
@@ -36,11 +36,5 @@ const LoginForm = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-  },
-});
 
 export default LoginForm;
