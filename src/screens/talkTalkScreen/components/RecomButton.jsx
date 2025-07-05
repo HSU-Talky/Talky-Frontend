@@ -1,6 +1,8 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 export const RecomButton = ({ onPress, isSelected }) => {
+    const text = "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안";
+
     return (
         <TouchableOpacity
             onPress = { onPress }
@@ -10,7 +12,9 @@ export const RecomButton = ({ onPress, isSelected }) => {
                     opacity: isSelected ? 1 : 0.5
                 }]}
         >
-            <Text style = { styles.recomText }>안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안</Text>
+            <View style = { styles.textContainer }>
+                <Text style = { styles.recomText }>{ text }</Text>
+            </View>
         </TouchableOpacity>
     )
 }
@@ -29,5 +33,6 @@ const styles = StyleSheet.create({
     recomText: {
         fontSize: 12,
         fontWeight: "500",
+        opacity: 1,
     }
 })
