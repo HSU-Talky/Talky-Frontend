@@ -3,12 +3,16 @@ import { TextInput, StyleSheet, View, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { getInputStyles } from "../../utils/getInputStyles";
 
-const SignInput = ({ placeholder, secureTextEntry = false }) => {
+const SignInput = ({
+  placeholder,
+  secureTextEntry = false,
+  value,
+  onChangeText,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [text, setText] = useState("");
   const [showPassword, setShowPassword] = useState(false); // 눈 아이콘 토글
 
-  const { backgroundColor, iconColor } = getInputStyles(isFocused, text); // 배경색, 눈아이콘 색
+  const { backgroundColor, iconColor } = getInputStyles(isFocused, value); // 배경색, 눈아이콘 색
   const isPasswordField = secureTextEntry; // 비밀번호 공개여부
 
   return (
@@ -17,8 +21,8 @@ const SignInput = ({ placeholder, secureTextEntry = false }) => {
         style={styles.textInput}
         placeholder={placeholder}
         placeholderTextColor="#B1B1B1"
-        value={text}
-        onChangeText={setText}
+        value={value}
+        onChangeText={onChangeText}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         secureTextEntry={isPasswordField && !showPassword}
