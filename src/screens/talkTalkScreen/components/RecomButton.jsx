@@ -1,10 +1,17 @@
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
-export const RecomButton = ({ opacity }) => {
+export const RecomButton = ({ onPress, isSelected }) => {
     return (
-        <View style = { [styles.button, { opacity }] }>
+        <TouchableOpacity
+            onPress = { onPress }
+            activeOpacity = { 1 }
+            style = { [styles.button, 
+                {
+                    opacity: isSelected ? 1 : 0.5
+                }]}
+        >
             <Text style = { styles.recomText }>안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 

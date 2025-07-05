@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native"
 import { RecomButton } from "./RecomButton"
+import { useState } from "react"
 
 export const RecomBox = () => {
     return (
@@ -11,9 +12,9 @@ export const RecomBox = () => {
                     </Text>
                 </View>
                 <RecomButton />
-                <RecomButton opacity = { 0.5 } />
-                <RecomButton opacity = { 0.5 } />
-                <RecomButton opacity = { 0.5 } />
+                <RecomButton />
+                <RecomButton />
+                <RecomButton />
             </View>
         </View>
     )
