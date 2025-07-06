@@ -53,7 +53,7 @@ const RoleSelector = ({ selectedRole, onSelect }) => {
         <Text style={styles.selectorText}>
           {selectedRole ? selectedRole : "역할을 선택해 주세요"}
         </Text>
-        <Ionicons name="caret-down-sharp" size={16} color={iconColor} />
+        <Ionicons name="caret-down-sharp" size={12.67} color={iconColor} />
       </TouchableOpacity>
 
       {/*  역할선택 항목 dropdown */}
@@ -69,7 +69,7 @@ const RoleSelector = ({ selectedRole, onSelect }) => {
               <Text style={styles.modalText}>{role}</Text>
               <Ionicons
                 name={isSelected ? "radio-button-on" : "radio-button-off"}
-                size={16}
+                size={12.67}
                 color={isSelected ? "#FFD321" : "#FFFFFF"}
               />
             </Pressable>
