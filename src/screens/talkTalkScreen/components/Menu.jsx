@@ -1,10 +1,13 @@
 import { MenuBox } from "./MenuBox";
 import { StyleSheet, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-import STAR from "../../../assets/talktalk/menu_star.png";
-import PRAC from "../../../assets/talktalk/menu_prac.png";
+import STAR from "../../../assets/images/talktalk/menu_star.png";
+import PRAC from "../../../assets/images/talktalk/menu_prac.png";
 
 export const Menu = () => {
+    const navigation = useNavigation();
+
     return (
         <View style = { styles.container }>
             <MenuBox 
@@ -16,6 +19,7 @@ export const Menu = () => {
                 width = { 148.33 }
                 title = "말하기 연습"
                 icon = { PRAC }
+                onPress = { () => navigation.navigate("Practice") }
             />
         </View>
         
