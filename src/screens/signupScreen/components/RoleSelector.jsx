@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { getInputStyles } from "../../../utils/getInputStyles";
+import { COLORS } from "../../../styles/color";
 
 const roles = ["일반", "보호자"]; // 역할 목록
 const DROPDOWN_HEIGHT = 62.67; // dropdown 높이
@@ -70,7 +71,7 @@ const RoleSelector = ({ selectedRole, onSelect }) => {
               <Ionicons
                 name={isSelected ? "radio-button-on" : "radio-button-off"}
                 size={12.67}
-                color={isSelected ? "#FFD321" : "#FFFFFF"}
+                color={isSelected ? COLORS.MAIN_YELLOW3 : COLORS.WHITE}
               />
             </Pressable>
           );
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
   selectorText: {
     fontSize: 11.33,
     fontWeight: "500",
-    color: "#2B2B2B",
+    color: COLORS.BLACK,
   },
   dropdown: {
     position: "absolute",
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
     top: 29.33,
     width: 232.67,
     height: 62.67,
-    backgroundColor: "#FFF3C7",
+    backgroundColor: COLORS.MAIN_YELLOW1,
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
     borderBottomLeftRadius: 3.33,
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
   modalText: {
     fontSize: 11.33,
     fontWeight: "500",
-    color: "#2B2B2B",
+    color: COLORS.BLACK,
   },
 });
 
