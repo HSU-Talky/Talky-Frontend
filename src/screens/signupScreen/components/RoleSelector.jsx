@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   Pressable,
+  Animated,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { getInputStyles } from "../../../utils/getInputStyles";
 
-const roles = ["일반", "보호자"];
+const roles = ["일반", "보호자"]; // 역할 목록
+const DROPDOWN_HEIGHT = 62.67; // dropdown 높이
 
 const RoleSelector = ({ selectedRole, onSelect }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -19,6 +21,18 @@ const RoleSelector = ({ selectedRole, onSelect }) => {
     isFocused,
     selectedRole || ""
   );
+
+  // 애니메이션 초기값 0
+  const dropdownHeight = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    Animated.timing(dropdownHeight, {
+      toValue: modalVisible ? DROPDOWN_HEIGHT : 0,
+      duration: 300,
+      useNativeDriver: false,
+    }).start(() => {
+      if (!modalVisible) setIsFocused(false);
+    });
+  }, [modalVisible, dropdownHeight]);
 
   const handleSelect = (role) => {
     onSelect(role);
@@ -42,28 +56,26 @@ const RoleSelector = ({ selectedRole, onSelect }) => {
         <Ionicons name="caret-down-sharp" size={16} color={iconColor} />
       </TouchableOpacity>
 
-      {/* 🎯 드롭다운 모달 (absolute View로 구현) */}
-      {modalVisible && (
-        <View style={styles.dropdown}>
-          {roles.map((role) => {
-            const isSelected = selectedRole === role;
-            return (
-              <Pressable
-                key={role}
-                style={[styles.modalItem, isSelected && styles.selectedItem]}
-                onPress={() => handleSelect(role)}
-              >
-                <Text style={styles.modalText}>{role}</Text>
-                <Ionicons
-                  name={isSelected ? "radio-button-on" : "radio-button-off"}
-                  size={16}
-                  color={isSelected ? "#FFD321" : "#FFFFFF"}
-                />
-              </Pressable>
-            );
-          })}
-        </View>
-      )}
+      {/*  역할선택 항목 dropdown */}
+      <Animated.View style={[styles.dropdown, { height: dropdownHeight }]}>
+        {roles.map((role) => {
+          const isSelected = selectedRole === role;
+          return (
+            <Pressable
+              key={role}
+              style={[styles.modalItem, isSelected && styles.selectedItem]}
+              onPress={() => handleSelect(role)}
+            >
+              <Text style={styles.modalText}>{role}</Text>
+              <Ionicons
+                name={isSelected ? "radio-button-on" : "radio-button-off"}
+                size={16}
+                color={isSelected ? "#FFD321" : "#FFFFFF"}
+              />
+            </Pressable>
+          );
+        })}
+      </Animated.View>
     </View>
   );
 };
@@ -90,7 +102,7 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     position: "absolute",
-    paddingTop: 6,
+    overflow: "hidden",
     top: 29.33,
     width: 232.67,
     height: 62.67,
