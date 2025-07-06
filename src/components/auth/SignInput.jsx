@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { TextInput, StyleSheet, View, TouchableOpacity } from "react-native";
+import {
+  TextInput,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { getInputStyles } from "../../utils/getInputStyles";
 
@@ -8,6 +14,9 @@ const SignInput = ({
   secureTextEntry = false,
   value,
   onChangeText,
+  showCheckButton = false, // 중복확인 버튼
+  checkButtonDisabled = false, // 중복확인 활성화
+  onCheckPress,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // 눈 아이콘 토글
@@ -40,6 +49,16 @@ const SignInput = ({
           />
         </TouchableOpacity>
       )}
+      {/* 중복확인 버튼 */}
+      {showCheckButton && (
+        <TouchableOpacity
+          onPress={onCheckPress}
+          disabled={checkButtonDisabled}
+          style={styles.checkButton}
+        >
+          <Text style={styles.checkButtonText}>중복확인</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -63,6 +82,21 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     marginLeft: 12,
+  },
+  checkButton: {
+    width: 53.33,
+    height: 18.67,
+    borderRadius: 16.67,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 8,
+  },
+
+  checkButtonText: {
+    fontSize: 12,
+    fontWeight: "400",
+    color: "#B1B1B1",
   },
 });
 

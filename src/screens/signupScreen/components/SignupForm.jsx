@@ -31,6 +31,8 @@ const SignupForm = () => {
         placeholder="아이디를 입력해 주세요"
         value={id}
         onChangeText={setId}
+        showCheckButton={true}
+        checkButtonDisabled={false}
       />
       <View style={{ height: 12.33 }} />
       <Text style={styles.text}>비밀번호</Text>
