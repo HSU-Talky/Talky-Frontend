@@ -1,11 +1,19 @@
 import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { RecomButton } from "./RecomButton"
+import { BlurView } from "expo-blur";
+import { useState } from "react";
 
 import CLOSE from "../../../assets/images/talktalk/close.png";
 import DELETE from "../../../assets/images/talktalk/delete.png";
-import { BlurView } from "expo-blur";
+import DELETED from "../../../assets/images/talktalk/deleted.png";
 
 export const SentenceModal = ({ visible, onClose }) => {
+    const [deleted, setDeleted] = useState([]);
+
+    const handleDelete = (index) => {
+        if (!deleted.includes(index)) setDeleted([...deleted, index]);
+    }
+
     return (
         <Modal
             visible = { visible } 
@@ -34,12 +42,14 @@ export const SentenceModal = ({ visible, onClose }) => {
                         { Array.from({ length: 10 }).map((_, index) => (
                             <View key = { index } style = { modalStyles.sentenceRow }>
                                 <RecomButton />
-                                <View style={ modalStyles.deleteBox }>
-                                    <Image 
-                                        source = { DELETE }
-                                        style = { modalStyles.deleteButton }
-                                    />
-                                </View>
+                                <TouchableOpacity onPress = { () => handleDelete(index) }>
+                                    <View style={ modalStyles.deleteBox }>
+                                        <Image 
+                                            source = { deleted.includes(index) ? DELETED : DELETE }
+                                            style = { modalStyles.deleteButton }
+                                        />
+                                    </View>
+                                </TouchableOpacity>
                             </View>
                         ))}
                     </View>
