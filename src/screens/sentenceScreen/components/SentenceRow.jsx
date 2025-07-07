@@ -4,7 +4,7 @@ import { RecomButton } from "../../talkTalkScreen/components/RecomButton"
 import DELETE from "../../../assets/images/talktalk/delete.png";
 import DELETED from "../../../assets/images/talktalk/deleted.png";
 
-export const SentenceRow = ({ index, text, deleted, onDelete }) => {
+export const SentenceRow = ({ index, text, deleted, isPending, onDelete }) => {
     return (
         <View key = { index } style = { rowStyles.sentenceRow }>
             <RecomButton text = { text } />
@@ -16,7 +16,7 @@ export const SentenceRow = ({ index, text, deleted, onDelete }) => {
                             { opacity: pressed ? 1 : 0.5 }
                         ]} />
                     <Image 
-                        source = { deleted.includes(index) ? DELETED : DELETE }
+                        source = { deleted.includes(index) || isPending ? DELETED : DELETE }
                         style = { rowStyles.deleteButton }
                     />
                     </View>

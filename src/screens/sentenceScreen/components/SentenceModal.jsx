@@ -14,6 +14,7 @@ export const SentenceModal = ({ visible, onClose }) => {
     const [deleted, setDeleted] = useState([]); // 삭제 문장 인덱스 저장
     const [dialogVisible, setDialogVisible] = useState(false);
     const [targetIndex, setTargetIndex] = useState(null);
+    const [pendingDeleteIndex, setPendingDeleteIndex] = useState(null);
 
     const [targetSentence, setTargetSentence] = useState("");
 
@@ -31,9 +32,10 @@ export const SentenceModal = ({ visible, onClose }) => {
     ];
 
     const openDialog = (index) => {
+        setPendingDeleteIndex(index);
         setTargetIndex(index);
-        setDialogVisible(true);
         setTargetSentence(sentences[index]);
+        setDialogVisible(true);
     }
 
     const handleRealDelete = () => {
@@ -46,6 +48,7 @@ export const SentenceModal = ({ visible, onClose }) => {
     const handleCancel = () => {
         setDialogVisible(false);
         setTargetIndex(null);
+        setPendingDeleteIndex(null);
     }
 
     const truncate = (text, max = 20) => {
@@ -88,6 +91,7 @@ export const SentenceModal = ({ visible, onClose }) => {
                                 text = { sentences[index] }
                                 deleted = { deleted }
                                 onDelete = { openDialog }
+                                isPending = { index === pendingDeleteIndex }
                             />
                         ))}
                     </View>
