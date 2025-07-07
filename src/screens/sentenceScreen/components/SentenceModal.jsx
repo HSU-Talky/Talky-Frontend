@@ -85,16 +85,19 @@ export const SentenceModal = ({ visible, onClose }) => {
                         
                     </View>
                     <View style = { modalStyles.sentence }>
-                        { Array.from({ length: 10 }).map((_, index) => (
-                            <SentenceRow
-                                key = { index }
-                                index = { index }
-                                text = { sentences[index] }
-                                deleted = { deleted }
-                                onDelete = { openDialog }
-                                isPending = { index === pendingDeleteIndex }
-                            />
-                        ))}
+                        { sentences.map((sentence, index) => {
+                            if (deleted.includes(index)) return null;
+                            return ( 
+                                <SentenceRow
+                                    key = { index }
+                                    index = { index }
+                                    text = { sentences[index] }
+                                    deleted = { deleted }
+                                    onDelete = { openDialog }
+                                    isPending = { index === pendingDeleteIndex }
+                                />
+                            );
+                        })}
                     </View>
                 </View>
 
