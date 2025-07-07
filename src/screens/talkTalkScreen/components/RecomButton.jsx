@@ -1,8 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
-export const RecomButton = ({ onPress, isSelected }) => {
-    const text = "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안";
-
+export const RecomButton = ({ onPress, isSelected, text }) => {
     return (
         <TouchableOpacity
             onPress = { onPress }

@@ -3,6 +3,10 @@ import { RecomButton } from "./RecomButton"
 import { useState } from "react"
 
 export const RecomBox = () => {
+    const [selectedIndex, setSelectedIndex] = useState(null);
+    
+    const sentences = ["안녕안녕안녕안녕안녕안녕안녕안녕"];
+
     return (
         <View style = { styles.container }>
             <View style = { styles.textContainer }>
@@ -11,10 +15,14 @@ export const RecomBox = () => {
                         추천 문장 몇 개 갖고 왔는데, 골라 봐!
                     </Text>
                 </View>
-                <RecomButton />
-                <RecomButton />
-                <RecomButton />
-                <RecomButton />
+                { sentences.map((sentence, index) => (
+                    <RecomButton
+                        key = { index }
+                        text = { sentence }
+                        isSelected = { selectedIndex === index }
+                        onPress = { () => setSelectedIndex(index) }
+                    />
+                ))}
             </View>
         </View>
     )
