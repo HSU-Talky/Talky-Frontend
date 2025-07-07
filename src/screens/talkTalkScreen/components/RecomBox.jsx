@@ -4,8 +4,13 @@ import { useState } from "react"
 
 export const RecomBox = () => {
     const [selectedIndex, setSelectedIndex] = useState(null);
-    
-    const sentences = ["안녕안녕안녕안녕안녕안녕안녕안녕"];
+
+    const sentences = [
+        "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 1",
+        "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 2",
+        "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 3",
+        "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 4"
+    ];
 
     return (
         <View style = { styles.container }>
