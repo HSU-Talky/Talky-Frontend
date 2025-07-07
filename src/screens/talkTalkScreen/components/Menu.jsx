@@ -1,7 +1,7 @@
 import { MenuBox } from "./MenuBox";
 import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { SentenceModal } from "./SentenceModal";
+import { SentenceModal } from "../../sentenceScreen/components/SentenceModal";
 
 import STAR from "../../../assets/images/talktalk/menu_star.png";
 import PRAC from "../../../assets/images/talktalk/menu_prac.png";
