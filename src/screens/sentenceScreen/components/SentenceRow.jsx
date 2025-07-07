@@ -4,25 +4,30 @@ import { RecomButton } from "../../talkTalkScreen/components/RecomButton"
 import DELETE from "../../../assets/images/talktalk/delete.png";
 import DELETED from "../../../assets/images/talktalk/deleted.png";
 
-export const SentenceRow = ({ index, text, deleted, isPending, onDelete }) => {
+export const SentenceRow = ({ index, text, isSelected, onPress, deleted, isPending, onDelete }) => {
     return (
-        <View key = { index } style = { rowStyles.sentenceRow }>
-            <RecomButton text = { text } />
-            <Pressable onPress = { () => onDelete(index) }>
-                {({ pressed }) => (
-                    <View style = { rowStyles.deleteBoxContainer }>
-                        <View style = {[
+        <Pressable onPress={() => onDelete(index)}>
+            {({ pressed }) => (
+                <View key={index} style={rowStyles.sentenceRow}> 
+                    <RecomButton 
+                        text={text}
+                        isSelected={isSelected}
+                        onPress={onPress}
+                        pressed={pressed}
+                    />
+                    <View style={rowStyles.deleteBoxContainer}>
+                        <View style={[
                             rowStyles.deleteBox,
                             { opacity: pressed ? 1 : 0.5 }
                         ]} />
-                    <Image 
-                        source = { deleted.includes(index) || isPending ? DELETED : DELETE }
-                        style = { rowStyles.deleteButton }
-                    />
+                        <Image 
+                            source={deleted.includes(index) || isPending ? DELETED : DELETE}
+                            style={rowStyles.deleteButton}
+                        />
                     </View>
-                )}
-            </Pressable>
-        </View>
+                </View>
+            )}
+        </Pressable>
     )
 }
 

@@ -1,10 +1,7 @@
 import { StyleSheet, Text, View } from "react-native"
 import { RecomButton } from "./RecomButton"
-import { useState } from "react"
 
 export const RecomBox = () => {
-    const [selectedIndex, setSelectedIndex] = useState(null);
-
     const sentences = [
         "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 1",
         "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 2",
@@ -24,8 +21,6 @@ export const RecomBox = () => {
                     <RecomButton
                         key = { index }
                         text = { sentence }
-                        isSelected = { selectedIndex === index }
-                        onPress = { () => setSelectedIndex(index) }
                     />
                 ))}
             </View>

@@ -15,6 +15,7 @@ export const SentenceModal = ({ visible, onClose }) => {
     const [dialogVisible, setDialogVisible] = useState(false);
     const [targetIndex, setTargetIndex] = useState(null);
     const [pendingDeleteIndex, setPendingDeleteIndex] = useState(null);
+    const [selectedIndex, setSelectedIndex] = useState(null);
 
     const [targetSentence, setTargetSentence] = useState("");
 
