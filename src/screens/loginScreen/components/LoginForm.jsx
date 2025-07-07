@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import SignInput from "../../../components/auth/SignInput";
 import SignButton from "../../../components/auth/SignButton";
+import ErrorIcon from "../../../components/auth/ErrorIcon";
 import { COLORS } from "../../../styles/color";
 
 const LoginForm = () => {
@@ -22,24 +23,33 @@ const LoginForm = () => {
 
   return (
     <View>
-      <SignInput
-        placeholder="아이디를 입력해 주세요"
-        value={id}
-        onChangeText={(text) => {
-          setId(text);
-          if (error) setError("");
-        }}
-      />
+      <View style={styles.inputWithIcon}>
+        <SignInput
+          placeholder="아이디를 입력해 주세요"
+          value={id}
+          onChangeText={(text) => {
+            setId(text);
+            if (error) setError("");
+          }}
+          hasError={!!error}
+        />
+        {error && <ErrorIcon />}
+      </View>
       <View style={{ height: 19.67 }} />
-      <SignInput
-        placeholder="비밀번호를 입력해 주세요"
-        secureTextEntry={true}
-        value={password}
-        onChangeText={(text) => {
-          setPassword(text);
-          if (error) setError("");
-        }}
-      />
+
+      <View style={styles.inputWithIcon}>
+        <SignInput
+          placeholder="비밀번호를 입력해 주세요"
+          secureTextEntry={true}
+          value={password}
+          onChangeText={(text) => {
+            setPassword(text);
+            if (error) setError("");
+          }}
+          hasError={!!error}
+        />
+        {error && <ErrorIcon />}
+      </View>
       <Text style={styles.error}>{error}</Text>
 
       <View style={{ height: 35 }} />
@@ -59,6 +69,11 @@ const styles = StyleSheet.create({
     color: COLORS.ERROR_MESSAGE,
     textAlign: "center",
     marginTop: 3,
+  },
+  inputWithIcon: {
+    width: 242.67,
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 

@@ -17,11 +17,17 @@ const SignInput = ({
   showCheckButton = false, // 중복확인 버튼
   checkButtonDisabled = false, // 중복확인 활성화
   onCheckPress,
+  hasError = false,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // 눈 아이콘 토글
 
-  const { backgroundColor, iconColor } = getInputStyles(isFocused, value); // 배경색, 눈아이콘 색
+  // 배경색, 눈아이콘 색
+  const { backgroundColor, iconColor } = getInputStyles(
+    isFocused,
+    value,
+    hasError
+  );
   const isPasswordField = secureTextEntry; // 비밀번호 공개여부
 
   return (

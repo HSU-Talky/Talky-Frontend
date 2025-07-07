@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import RoleSelector from "./RoleSelector";
 import SignInput from "../../../components/auth/SignInput";
 import SignButton from "../../../components/auth/SignButton";
+import ErrorIcon from "../../../components/auth/ErrorIcon";
 import { COLORS } from "../../../styles/color";
 import { validateSignup } from "../../../utils/validation";
 
@@ -42,43 +43,56 @@ const SignupForm = () => {
     <View>
       {/* 이름 */}
       <Text style={styles.text}>이름</Text>
-      <SignInput
-        placeholder="이름을 입력해 주세요"
-        value={name}
-        onChangeText={(text) => {
-          setName(text);
-          if (errors.name) setErrors((prev) => ({ ...prev, name: "" }));
-        }}
-      />
+      <View style={styles.inputWithIcon}>
+        <SignInput
+          placeholder="이름을 입력해 주세요"
+          value={name}
+          onChangeText={(text) => {
+            setName(text);
+            if (errors.name) setErrors((prev) => ({ ...prev, name: "" }));
+          }}
+          hasError={!!errors.name}
+        />
+        {errors.name && <ErrorIcon />}
+      </View>
       <Text style={styles.error}>{errors.name}</Text>
       <View style={{ height: 1 }} />
 
       {/* 아이디 */}
       <Text style={styles.text}>아이디</Text>
-      <SignInput
-        placeholder="아이디를 입력해 주세요"
-        value={id}
-        onChangeText={(text) => {
-          setId(text);
-          if (errors.id) setErrors((prev) => ({ ...prev, id: "" }));
-        }}
-        showCheckButton={true}
-        checkButtonDisabled={false}
-      />
+      <View style={styles.inputWithIcon}>
+        <SignInput
+          placeholder="아이디를 입력해 주세요"
+          value={id}
+          onChangeText={(text) => {
+            setId(text);
+            if (errors.id) setErrors((prev) => ({ ...prev, id: "" }));
+          }}
+          hasError={!!errors.id}
+          showCheckButton={true}
+          checkButtonDisabled={false}
+        />
+        {errors.id && <ErrorIcon />}
+      </View>
       <Text style={styles.error}>{errors.id}</Text>
       <View style={{ height: 1 }} />
 
       {/* 비밀번호 */}
       <Text style={styles.text}>비밀번호</Text>
-      <SignInput
-        placeholder="비밀번호를 입력해 주세요"
-        secureTextEntry={true}
-        value={password}
-        onChangeText={(text) => {
-          setPassword(text);
-          if (errors.password) setErrors((prev) => ({ ...prev, password: "" }));
-        }}
-      />
+      <View style={styles.inputWithIcon}>
+        <SignInput
+          placeholder="비밀번호를 입력해 주세요"
+          secureTextEntry={true}
+          value={password}
+          onChangeText={(text) => {
+            setPassword(text);
+            if (errors.password)
+              setErrors((prev) => ({ ...prev, password: "" }));
+          }}
+          hasError={!!errors.password}
+        />
+        {errors.password && <ErrorIcon />}
+      </View>
       <Text style={styles.error}>{errors.password}</Text>
       <View style={{ height: 11 }} />
 
@@ -111,6 +125,11 @@ const styles = StyleSheet.create({
     color: COLORS.ERROR_MESSAGE,
     marginTop: 3,
     textAlign: "center",
+  },
+  inputWithIcon: {
+    width: 242.67,
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 
