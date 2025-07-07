@@ -4,10 +4,10 @@ import { RecomButton } from "../../talkTalkScreen/components/RecomButton"
 import DELETE from "../../../assets/images/talktalk/delete.png";
 import DELETED from "../../../assets/images/talktalk/deleted.png";
 
-export const SentenceRow = ({ index, deleted, onDelete }) => {
+export const SentenceRow = ({ index, text, deleted, onDelete }) => {
     return (
         <View key = { index } style = { rowStyles.sentenceRow }>
-            <RecomButton />
+            <RecomButton text = { text } />
             <Pressable onPress = { () => onDelete(index) }>
                 {({ pressed }) => (
                     <View style = { rowStyles.deleteBoxContainer }>

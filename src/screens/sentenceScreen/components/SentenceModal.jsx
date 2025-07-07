@@ -6,14 +6,55 @@ import { useState } from "react";
 import CLOSE from "../../../assets/images/talktalk/close.png";
 import DELETE from "../../../assets/images/talktalk/delete.png";
 import DELETED from "../../../assets/images/talktalk/deleted.png";
+
 import { SentenceRow } from "./SentenceRow";
+import Dialog from "../../../components/dialog/Dialog";
 
 export const SentenceModal = ({ visible, onClose }) => {
-    const [deleted, setDeleted] = useState([]);
+    const [deleted, setDeleted] = useState([]); // 삭제 문장 인덱스 저장
+    const [dialogVisible, setDialogVisible] = useState(false);
+    const [targetIndex, setTargetIndex] = useState(null);
 
-    const handleDelete = (index) => {
-        if (!deleted.includes(index)) setDeleted([...deleted, index]);
+    const [targetSentence, setTargetSentence] = useState("");
+
+    const sentences = [
+        "문장 1 문장 1 문장 1 문장 1 문장 1 문장 1 문장 1 문장 1",
+        "문장 2 문장 2 문장 2 문장 2 문장 2 문장 2 문장 2 문장 2",
+        "문장 3 문장 3 문장 3 문장 3 문장 3 문장 3 문장 3 문장 3",
+        "문장 4 문장 4 문장 4 문장 4 문장 4 문장 4 문장 4 문장 4",
+        "문장 5 문장 5 문장 5 문장 5 문장 5 문장 5 문장 5 문장 5",
+        "문장 6 문장 6 문장 6 문장 6 문장 6 문장 6 문장 6 문장 6",
+        "문장 7 문장 7 문장 7 문장 7 문장 7 문장 7 문장 7 문장 7",
+        "문장 8 문장 8 문장 8 문장 8 문장 8 문장 8 문장 8 문장 8",
+        "문장 9 문장 9 문장 9 문장 9 문장 9 문장 9 문장 9 문장 9",
+        "문장 10 문장 10 문장 10 문장 10 문장 10 문장 10 문장 10"
+    ];
+
+    const openDialog = (index) => {
+        setTargetIndex(index);
+        setDialogVisible(true);
+        setTargetSentence(sentences[index]);
     }
+
+    const handleRealDelete = () => {
+        if (targetIndex !== null && !deleted.includes(targetIndex)) setDeleted([...deleted, targetIndex]);
+
+        setDialogVisible(false);
+        setTargetIndex(null);
+    }
+
+    const handleCancel = () => {
+        setDialogVisible(false);
+        setTargetIndex(null);
+    }
+
+    const truncate = (text, max = 20) => {
+        return text.length > max ? text.slice(0, max) + "..." : text;
+    }
+
+    // const handleDelete = (index) => { // 문장 삭제
+    //     if (!deleted.includes(index)) setDeleted([...deleted, index]);
+    // }
 
     return (
         <Modal
@@ -21,7 +62,7 @@ export const SentenceModal = ({ visible, onClose }) => {
             transparent
         >
             <View style = { modalStyles.overlay }>
-                <BlurView 
+                <BlurView
                     style = { modalStyles.backgroundBlur }
                     tint = "light"
                     intensity = { 100 }
@@ -44,12 +85,24 @@ export const SentenceModal = ({ visible, onClose }) => {
                             <SentenceRow
                                 key = { index }
                                 index = { index }
+                                text = { sentences[index] }
                                 deleted = { deleted }
-                                onDelete = { handleDelete }
+                                onDelete = { openDialog }
                             />
                         ))}
                     </View>
                 </View>
+
+                <Dialog 
+                    visible = { dialogVisible }
+                    title = "즐겨찾기 문장 삭제"
+                    message = { `[${ truncate(targetSentence) }]` }
+                    subMessage = "즐겨찾기 한 문장을 삭제할까요?"
+                    cancelText = "취소"
+                    confirmText = "삭제하기"
+                    onCancel = { handleCancel }
+                    onConfirm = { handleRealDelete }
+                />
             </View>
         </Modal>
     )
