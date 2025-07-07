@@ -4,6 +4,7 @@ import RoleSelector from "./RoleSelector";
 import SignInput from "../../../components/auth/SignInput";
 import SignButton from "../../../components/auth/SignButton";
 import { COLORS } from "../../../styles/color";
+import { validateSignup } from "../../../utils/validation";
 
 const SignupForm = () => {
   const [name, setName] = useState("");
@@ -11,38 +12,77 @@ const SignupForm = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState(null);
 
+  // 오류 메시지 상태
+  const [errors, setErrors] = useState({
+    name: "",
+    id: "",
+    password: "",
+  });
+
+  // 유효성 조건
+  const validate = () => {
+    const { isValid, errors: newErrors } = validateSignup({
+      name,
+      id,
+      password,
+    });
+    setErrors(newErrors);
+    return isValid;
+  };
+
   // 회원가입 함수
-  const handleLogin = () => {
+  const handleSignup = () => {
     // 회원가입 로직 구현 예정
-    console.log("회원가입 ", { name, id, password, role });
+    if (validate()) {
+      console.log("회원가입 ", { name, id, password, role });
+    }
   };
 
   return (
     <View>
+      {/* 이름 */}
       <Text style={styles.text}>이름</Text>
       <SignInput
         placeholder="이름을 입력해 주세요"
         value={name}
-        onChangeText={setName}
+        onChangeText={(text) => {
+          setName(text);
+          if (errors.name) setErrors((prev) => ({ ...prev, name: "" }));
+        }}
       />
-      <View style={{ height: 12.33 }} />
+      <Text style={styles.error}>{errors.name}</Text>
+      <View style={{ height: 1 }} />
+
+      {/* 아이디 */}
       <Text style={styles.text}>아이디</Text>
       <SignInput
         placeholder="아이디를 입력해 주세요"
         value={id}
-        onChangeText={setId}
+        onChangeText={(text) => {
+          setId(text);
+          if (errors.id) setErrors((prev) => ({ ...prev, id: "" }));
+        }}
         showCheckButton={true}
         checkButtonDisabled={false}
       />
-      <View style={{ height: 12.33 }} />
+      <Text style={styles.error}>{errors.id}</Text>
+      <View style={{ height: 1 }} />
+
+      {/* 비밀번호 */}
       <Text style={styles.text}>비밀번호</Text>
       <SignInput
         placeholder="비밀번호를 입력해 주세요"
         secureTextEntry={true}
         value={password}
-        onChangeText={setPassword}
+        onChangeText={(text) => {
+          setPassword(text);
+          if (errors.password) setErrors((prev) => ({ ...prev, password: "" }));
+        }}
       />
-      <View style={{ height: 22.33 }} />
+      <Text style={styles.error}>{errors.password}</Text>
+      <View style={{ height: 11 }} />
+
+      {/* 역할 */}
       <Text style={styles.text}>역할</Text>
       <RoleSelector selectedRole={role} onSelect={setRole} />
       <View style={{ height: 92.67 }} />
@@ -51,7 +91,7 @@ const SignupForm = () => {
         disabled={
           !(name.length > 0 && id.length > 0 && password.length > 0 && role)
         }
-        onPress={handleLogin}
+        onPress={handleSignup}
       />
     </View>
   );
@@ -60,10 +100,17 @@ const SignupForm = () => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 9.33,
-    fontWeight: 500,
+    fontWeight: "500",
     color: COLORS.SUB_BLACK,
     marginBottom: 5,
     marginLeft: 10,
+  },
+  error: {
+    fontSize: 7.33,
+    fontWeight: "400",
+    color: COLORS.ERROR_MESSAGE,
+    marginTop: 3,
+    textAlign: "center",
   },
 });
 
