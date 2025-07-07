@@ -1,11 +1,12 @@
-import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import { RecomButton } from "./RecomButton"
+import { Image, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { RecomButton } from "../../talkTalkScreen/components/RecomButton"
 import { BlurView } from "expo-blur";
 import { useState } from "react";
 
 import CLOSE from "../../../assets/images/talktalk/close.png";
 import DELETE from "../../../assets/images/talktalk/delete.png";
 import DELETED from "../../../assets/images/talktalk/deleted.png";
+import { SentenceRow } from "./SentenceRow";
 
 export const SentenceModal = ({ visible, onClose }) => {
     const [deleted, setDeleted] = useState([]);
@@ -38,19 +39,14 @@ export const SentenceModal = ({ visible, onClose }) => {
                         </TouchableOpacity>
                         
                     </View>
-                    <View style={modalStyles.sentence}>
+                    <View style = { modalStyles.sentence }>
                         { Array.from({ length: 10 }).map((_, index) => (
-                            <View key = { index } style = { modalStyles.sentenceRow }>
-                                <RecomButton />
-                                <TouchableOpacity onPress = { () => handleDelete(index) }>
-                                    <View style={ modalStyles.deleteBox }>
-                                        <Image 
-                                            source = { deleted.includes(index) ? DELETED : DELETE }
-                                            style = { modalStyles.deleteButton }
-                                        />
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
+                            <SentenceRow
+                                key = { index }
+                                index = { index }
+                                deleted = { deleted }
+                                onDelete = { handleDelete }
+                            />
                         ))}
                     </View>
                 </View>
@@ -115,24 +111,5 @@ const modalStyles = StyleSheet.create({
         alignItems: "center",
         gap: 15.33,
         paddingVertical: 10
-    },
-
-    sentenceRow: {
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 5
-    },
-
-    deleteBox: {
-        width: 40,
-        height: 40,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#FFF",
-        borderRadius: 26.66
-    },
-
-    deleteButton: {
-
     }
 })
