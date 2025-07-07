@@ -7,6 +7,7 @@ export const CurrentBox = ({ icon, currentInfo, currentState, iconStyle }) => {
             <Image 
                 source = { icon }
                 style = { iconStyle }
+                resizeMode = "contain"
             />
             <Text style = { styles.labelText }>
                 { currentInfo }
