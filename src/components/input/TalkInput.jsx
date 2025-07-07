@@ -3,6 +3,7 @@ import { Image, Keyboard, StyleSheet, TextInput, View } from "react-native"
 import { InputLeft } from "./InputLeft";
 import { InputRight } from "./InputRight";
 import { useMemo, useState } from "react";
+import { StarToast } from "./StarToast";
 
 export const TalkInput = () => {
     const [text, setText] = useState("");
@@ -10,6 +11,12 @@ export const TalkInput = () => {
     const [submitted, setSubmitted] = useState(false);
 
     const [rightPressed, setRightPressed] = useState(false);
+
+    const [showToast, setShowToast] = useState(false);
+
+    const handleShowToast = () => {
+        setShowToast(true);
+    };
 
     const status = useMemo(() => {
         if (submitted) return "submitted"; /* 입력 완료 */
@@ -69,7 +76,10 @@ export const TalkInput = () => {
             status === "submitted" && styles.submitContainer,
             rightPressed && styles.rightPressedContainer
         ]}>
-            <InputLeft status = { status }/>
+            <InputLeft 
+                status = { status }
+                onFavoriteToggle = { handleShowToast }
+            />
             <TextInput
                 placeholder = "표현하고 싶은 문장을 적어 봐!"
                 placeholderTextColor = { getPlaceholderColor() }
@@ -87,6 +97,7 @@ export const TalkInput = () => {
                 blurOnSubmit = { false }
             />
             <InputRight status = { status } onPress = { handleRightPress }/>
+            { showToast && <StarToast onHide = { () => setShowToast(false) } />}
         </View>
     )
 }

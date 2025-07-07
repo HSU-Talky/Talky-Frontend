@@ -1,26 +1,29 @@
-import { Alert, Image, StyleSheet, TextInput, TouchableOpacity, View } from "react-native"
+import { Alert, Image, Pressable, StyleSheet, TextInput, TouchableOpacity, View } from "react-native"
 
 import STAR from "../../assets/images/talktalk/star.png";
 import STAR_PRESS from "../../assets/images/talktalk/star_press.png";
 import { useState } from "react";
 
-export const InputLeft = ({ status }) => {
+export const InputLeft = ({ status, onFavoriteToggle }) => {
     const [selected, setSelected] = useState(false);
 
     const onPress = () => {
-        setSelected(prev => !prev);
-        Alert.alert(selected ? "즐겨찾기 해제" : "즐겨찾기 완료!");
+        const next = !selected;
+        setSelected(next);
+        onFavoriteToggle?.();
     };
 
     return (
-        <TouchableOpacity onPress = { onPress }>
-            <View style = { styles.inputLeft }>
-                <Image
-                    source = { selected ? STAR_PRESS : STAR } 
-                    style = { styles.leftImage }
-                />
-            </View>
-        </TouchableOpacity>
+        <Pressable onPress = { onPress }>
+            {({ pressed }) => (
+                <View style = { styles.inputLeft }>
+                    <Image
+                        source = { pressed ? STAR_PRESS : STAR } 
+                        style = { styles.leftImage }
+                    />
+                </View>
+            )}
+        </Pressable>
         
     )
 }
