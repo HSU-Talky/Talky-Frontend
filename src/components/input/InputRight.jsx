@@ -20,6 +20,7 @@ export const InputRight = ({ status, onPress }) => {
                 <Image
                     source = { getImageSource() }
                     style = { inputRightStyles.RightImage }
+                    resizeMode = "contain"
                 />
             </View>
         </TouchableOpacity>
