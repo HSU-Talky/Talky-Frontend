@@ -14,6 +14,7 @@ export const MenuBox = ({ width, title, icon, onPress }) => {
             <Image 
                 source = { icon }
                 style = { styles.iconImage }
+                resizeMode = "contain"
             />
         </Box>
     )

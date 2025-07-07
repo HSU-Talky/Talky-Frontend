@@ -3,8 +3,8 @@ import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SentenceModal } from "../../sentenceScreen/components/SentenceModal";
 
-import STAR from "../../../assets/images/talktalk/menu_star.png";
-import PRAC from "../../../assets/images/talktalk/menu_prac.png";
+import MENU_STAR from "../../../assets/images/talktalk/menu_star.png";
+import MENU_PRAC from "../../../assets/images/talktalk/menu_prac.png";
 import { useState } from "react";
 
 export const Menu = () => {
@@ -16,13 +16,13 @@ export const Menu = () => {
             <MenuBox 
                 width = { 165.67 }
                 title = "즐겨찾기 문장들"
-                icon = { STAR }
+                icon = { MENU_STAR }
                 onPress = { () => setModalOpen(true) }
             />
             <MenuBox 
                 width = { 148.33 }
                 title = "말하기 연습"
-                icon = { PRAC }
+                icon = { MENU_PRAC }
                 onPress = { () => navigation.navigate("Practice") }
             />
 
