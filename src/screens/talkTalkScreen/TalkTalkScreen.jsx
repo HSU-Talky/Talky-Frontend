@@ -1,22 +1,26 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import CurrentTime from "./components/CurrentTime";
 import CurrentLocation from "./components/CurrentLocation";
 import { TalkInput } from "../../components/input/TalkInput";
 import { RecomBox } from "./components/RecomBox";
 import { Menu } from "./components/Menu";
+import { LocationBox } from "./components/LocationBox";
 
 const TalkTalkScreen = () => {
   return (
-    <View style = { styles.container }>
-      <View style = { styles.current }>
-        <CurrentTime />
-        <CurrentLocation />
+    <ScrollView>
+      <View style = { styles.container }>
+        <View style = { styles.current }>
+          <CurrentTime />
+          <CurrentLocation />
+        </View>
+        <TalkInput />
+        <LocationBox />
+        <RecomBox />
+        <Menu />
       </View>
-      <TalkInput />
-      <RecomBox />
-      <Menu />
-    </View>
+    </ScrollView>
   );
 };
 
