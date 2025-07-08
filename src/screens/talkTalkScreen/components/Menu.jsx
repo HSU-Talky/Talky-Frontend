@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { SentenceModal } from "../../sentenceScreen/components/SentenceModal";
 
 import MENU_STAR from "../../../assets/images/talktalk/menu_star.png";
-import MENU_PRAC from "../../../assets/images/talktalk/menu_prac.png";
+// import MENU_PRAC from "../../../assets/images/talktalk/menu_prac.png";
 import { useState } from "react";
 
 export const Menu = () => {
@@ -14,17 +14,16 @@ export const Menu = () => {
     return (
         <View style = { styles.container }>
             <MenuBox 
-                width = { 165.67 }
                 title = "즐겨찾기 문장들"
                 icon = { MENU_STAR }
                 onPress = { () => setModalOpen(true) }
             />
-            <MenuBox 
+            {/* <MenuBox 
                 width = { 148.33 }
                 title = "말하기 연습"
                 icon = { MENU_PRAC }
                 onPress = { () => navigation.navigate("Practice") }
-            />
+            /> */}
 
             <SentenceModal
                 visible = { modalOpen }

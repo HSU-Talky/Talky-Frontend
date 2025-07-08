@@ -1,12 +1,12 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
-export const MenuBox = ({ width, title, icon, onPress }) => {
+export const MenuBox = ({ title, icon, onPress }) => {
     const Box = onPress ? TouchableOpacity : View;
 
     return (
         <Box 
             onPress = { onPress } 
-            style = { [styles.container, { width }] }
+            style = { styles.container }
         >
             <View style = { styles.menuTitle }>
                 <Text style = { styles.titleText }>{ title }</Text>
@@ -22,7 +22,8 @@ export const MenuBox = ({ width, title, icon, onPress }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: 141.333,
+        width: 228,
+        height: 125,
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     },
 
     iconImage: {
-        height: 65,
+        height: 68,
         marginBottom: 16.33
     }
 });
