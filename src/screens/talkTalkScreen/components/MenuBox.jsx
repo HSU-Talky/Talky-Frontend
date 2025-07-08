@@ -1,10 +1,8 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
 export const MenuBox = ({ title, icon, onPress }) => {
-    const Box = onPress ? TouchableOpacity : View;
-
     return (
-        <Box 
+        <TouchableOpacity 
             onPress = { onPress } 
             style = { styles.container }
         >
@@ -16,7 +14,7 @@ export const MenuBox = ({ title, icon, onPress }) => {
                 style = { styles.iconImage }
                 resizeMode = "contain"
             />
-        </Box>
+        </TouchableOpacity>
     )
 }
 
