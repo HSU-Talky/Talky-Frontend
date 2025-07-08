@@ -8,7 +8,14 @@ export const SentenceRow = ({ index, text, isSelected, onPress, deleted, isPendi
     return (
         <Pressable onPress={() => onDelete(index)}>
             {({ pressed }) => (
-                <View key={index} style={rowStyles.sentenceRow}> 
+                <View key={index} style={[
+                    rowStyles.sentenceRow,
+                    isPending && {
+                        borderWidth: 1,
+                        borderColor: '#000000',
+                        borderRadius: 26.67
+                    }
+                ]}>
                     <RecomButton 
                         text={text}
                         isSelected={isSelected}
@@ -36,6 +43,10 @@ const rowStyles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 5
+    },
+
+    leftBox: {
+        flex: 1, // RecomButton가 차지할 공간
     },
 
     deleteBoxContainer: {
