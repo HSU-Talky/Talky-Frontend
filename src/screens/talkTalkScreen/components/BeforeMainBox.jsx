@@ -6,6 +6,8 @@ import { useState } from "react";
 import { BeforeLocationComponent } from "./BeforeLocationComponent";
 
 export const BeforeMainBox = ({ onStart }) => {
+    const [stateText, setStateText] = useState(""); // 입력 상태 저장
+
     const [selectedLocation, setSelectedLocation] = useState(null);
 
     const [sentences, setSentences] = useState([
@@ -36,13 +38,17 @@ export const BeforeMainBox = ({ onStart }) => {
             <TextInput 
                 placeholder = "장소, 현재 상태를 간단하게 입력해 주세요." 
                 placeholderTextColor = { "#9F9F9F" }   
-                style = { styles.input }        
+                style = { styles.input } 
+                onChangeText = { setStateText } // 입력 상태 업데이트       
             />
             <BeforeLocationComponent
                 selected = { selectedLocation }
                 onSelect = { setSelectedLocation }
             />
-            <TouchableOpacity style = { styles.startBtn } onPress = { onStart }>
+            <TouchableOpacity 
+                style = { styles.startBtn } 
+                onPress = { () => onStart(selectedLocation, stateText) }
+            >
                 <Text style = { styles.buttonText }>시작</Text>
             </TouchableOpacity>
         </View>

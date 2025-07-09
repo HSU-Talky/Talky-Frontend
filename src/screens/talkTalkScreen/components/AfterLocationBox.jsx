@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native"
 
-export const AfterLocationBox = () => {
+export const AfterLocationBox = ({ location, mystate }) => {
     return (
         <View style = { styles.locationBox }>
-            <Text style = { styles.locationText }>장소</Text>
+            <Text style = { styles.locationText }>{ location }</Text>
             <View style = { styles.locationLine } />
-            <Text style = { styles.locationSentence }>사용자가 입력한 현재 상태</Text>
+            <Text style = { styles.locationSentence }>{ mystate }</Text>
         </View>
     )
 }

@@ -4,7 +4,7 @@ import { AfterMainSentence } from "./AfterMainSentence";
 import RESET from "../../../assets/images/talktalk/reset.png";
 import { useState } from "react";
 
-export const AfterMainBox = () => {
+export const AfterMainBox = ({ selectedLocation, stateText }) => {
     const [sentences, setSentences] = useState([
         "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 1",
         "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 2",
@@ -20,7 +20,7 @@ export const AfterMainBox = () => {
             "새 문장 새 문장 새 문장 새 문장 새 문장 4"
         ])
     }
-
+    
     return (
         <View style = { styles.container }>
             <View style = { styles.textContainer }>

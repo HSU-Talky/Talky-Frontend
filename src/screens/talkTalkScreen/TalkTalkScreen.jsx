@@ -10,6 +10,8 @@ import { BeforeMainBox } from "./components/BeforeMainBox";
 
 const TalkTalkScreen = () => {
   const [started, setStarted] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [stateText, setStateText] = useState("");
 
   return (
     <ScrollView>
@@ -24,13 +26,17 @@ const TalkTalkScreen = () => {
 
         <>
           { !started && (
-            <BeforeMainBox onStart = { () => setStarted(true) } />
+            <BeforeMainBox onStart = { (location, text) => {
+              setSelectedLocation(location);
+              setStateText(text);
+              setStarted(true);
+            }} />
           )}
 
           { started && (
             <>
-              <AfterLocationBox />
-              <AfterMainBox />
+              <AfterLocationBox location = { selectedLocation } mystate = { stateText } />
+              <AfterMainBox selectedLocation = { selectedLocation } stateText = { stateText } />
             </>
           )}
         </> 
