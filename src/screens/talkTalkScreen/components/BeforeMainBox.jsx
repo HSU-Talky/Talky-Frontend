@@ -5,7 +5,7 @@ import RESET from "../../../assets/images/talktalk/reset.png";
 import { useState } from "react";
 import { BeforeLocationComponent } from "./BeforeLocationComponent";
 
-export const BeforeMainBox = () => {
+export const BeforeMainBox = ({ onStart }) => {
     const [sentences, setSentences] = useState([
         "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 1",
         "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 2",
@@ -37,7 +37,7 @@ export const BeforeMainBox = () => {
                 style = { styles.input }        
             />
             <BeforeLocationComponent />
-            <TouchableOpacity style = { styles.startBtn }>
+            <TouchableOpacity style = { styles.startBtn } onPress = { onStart }>
                 <Text style = { styles.buttonText }>시작</Text>
             </TouchableOpacity>
         </View>
