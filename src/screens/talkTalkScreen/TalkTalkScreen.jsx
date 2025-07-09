@@ -1,23 +1,40 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import CurrentTime from "./components/CurrentTime";
 import CurrentLocation from "./components/CurrentLocation";
 import { TalkInput } from "../../components/input/TalkInput";
 import { AfterMainBox } from "./components/AfterMainBox";
 import { StarMenuBox } from "./components/StarMenuBox";
 import { AfterLocationBox } from "./components/AfterLocationBox";
+import { BeforeMainBox } from "./components/BeforeMainBox";
 
 const TalkTalkScreen = () => {
+  const [started, setStarted] = useState(false);
+
   return (
     <ScrollView>
       <View style = { styles.container }>
+
         <View style = { styles.current }>
           <CurrentTime />
           <CurrentLocation />
         </View>
+
         <TalkInput />
-        <AfterLocationBox />
-        <AfterMainBox />
+
+        <>
+          { !started && (
+            <BeforeMainBox onStart = { () => setStarted(true) } />
+          )}
+
+          { started && (
+            <>
+              <AfterLocationBox />
+              <AfterMainBox />
+            </>
+          )}
+        </> 
+
         <StarMenuBox />
       </View>
     </ScrollView>
