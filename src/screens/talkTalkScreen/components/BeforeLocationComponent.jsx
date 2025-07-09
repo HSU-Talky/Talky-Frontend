@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native"
+import { Pressable, StyleSheet, Text, View } from "react-native"
 
-export const BeforeLocationComponent = ({ }) => {
+export const BeforeLocationComponent = ({ selected, onSelect }) => {
     const locationList = [
         "병원", "식당", "학교", "마트", "교통", "은행", "약국", "기타"
     ];
@@ -16,9 +16,15 @@ export const BeforeLocationComponent = ({ }) => {
             { showList.map((row, rowIndex) => (
                 <View key = { rowIndex } style = { styles.row }>
                     { row.map((location, index) => (
-                        <View key = { index } style = { styles.boxContainer }>
+                        <Pressable 
+                            key = { index }
+                            onPress = { () => onSelect(location) } 
+                            style = {[
+                                styles.boxContainer,
+                                selected === location && styles.selectedBox
+                            ]}>
                             <Text style = { styles.locationText }>{ location }</Text>
-                        </View>
+                        </Pressable>
                     ))}
                 </View>
             ))}
@@ -47,6 +53,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#FFFFFF"
+    },
+
+    selectedBox: {
+        backgroundColor: "#FFD321"
     },
 
     locationText: {

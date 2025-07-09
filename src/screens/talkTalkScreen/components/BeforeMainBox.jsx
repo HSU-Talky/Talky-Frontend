@@ -6,6 +6,8 @@ import { useState } from "react";
 import { BeforeLocationComponent } from "./BeforeLocationComponent";
 
 export const BeforeMainBox = ({ onStart }) => {
+    const [selectedLocation, setSelectedLocation] = useState(null);
+
     const [sentences, setSentences] = useState([
         "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 1",
         "안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕안녕 2",
@@ -36,7 +38,10 @@ export const BeforeMainBox = ({ onStart }) => {
                 placeholderTextColor = { "#9F9F9F" }   
                 style = { styles.input }        
             />
-            <BeforeLocationComponent />
+            <BeforeLocationComponent
+                selected = { selectedLocation }
+                onSelect = { setSelectedLocation }
+            />
             <TouchableOpacity style = { styles.startBtn } onPress = { onStart }>
                 <Text style = { styles.buttonText }>시작</Text>
             </TouchableOpacity>
