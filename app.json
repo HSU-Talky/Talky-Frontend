@@ -20,10 +20,16 @@
         "foregroundImage": "./src/assets/splash/splash-bg.png",
         "backgroundColor": "#FFFEF6"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.sukiii.Talky"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e31334cd-57d5-4d9d-b5a6-6416ce441fea"
+      }
     }
   }
 }
