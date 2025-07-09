@@ -1,5 +1,4 @@
-import { Image, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import { RecomButton } from "../../talkTalkScreen/components/RecomButton"
+import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { BlurView } from "expo-blur";
 import { useState } from "react";
 

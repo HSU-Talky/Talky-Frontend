@@ -1,5 +1,5 @@
 import { Image, Pressable, StyleSheet, View } from "react-native"
-import { RecomButton } from "../../talkTalkScreen/components/RecomButton"
+import { AfterMainSentence } from "../../talkTalkScreen/components/AfterMainSentence"
 
 import DELETE from "../../../assets/images/talktalk/delete.png";
 import DELETED from "../../../assets/images/talktalk/deleted.png";
@@ -16,7 +16,7 @@ export const SentenceRow = ({ index, text, isSelected, onPress, deleted, isPendi
                         borderRadius: 26.67
                     }
                 ]}>
-                    <RecomButton 
+                    <AfterMainSentence 
                         text={text}
                         isSelected={isSelected}
                         onPress={onPress}
@@ -46,7 +46,7 @@ const rowStyles = StyleSheet.create({
     },
 
     leftBox: {
-        flex: 1, // RecomButton가 차지할 공간
+        flex: 1,
     },
 
     deleteBoxContainer: {

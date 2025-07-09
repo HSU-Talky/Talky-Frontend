@@ -3,9 +3,9 @@ import React from "react";
 import CurrentTime from "./components/CurrentTime";
 import CurrentLocation from "./components/CurrentLocation";
 import { TalkInput } from "../../components/input/TalkInput";
-import { RecomBox } from "./components/RecomBox";
-import { Menu } from "./components/Menu";
-import { LocationBox } from "./components/LocationBox";
+import { AfterMainBox } from "./components/AfterMainBox";
+import { StarMenuBox } from "./components/StarMenuBox";
+import { AfterLocationBox } from "./components/AfterLocationBox";
 
 const TalkTalkScreen = () => {
   return (
@@ -16,9 +16,9 @@ const TalkTalkScreen = () => {
           <CurrentLocation />
         </View>
         <TalkInput />
-        <LocationBox />
-        <RecomBox />
-        <Menu />
+        <AfterLocationBox />
+        <AfterMainBox />
+        <StarMenuBox />
       </View>
     </ScrollView>
   );
