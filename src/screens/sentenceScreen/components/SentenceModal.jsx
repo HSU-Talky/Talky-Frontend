@@ -8,6 +8,7 @@ import DELETED from "../../../assets/images/talktalk/deleted.png";
 
 import { SentenceRow } from "./SentenceRow";
 import Dialog from "../../../components/dialog/Dialog";
+import { truncateText } from "../../../utils/truncateText";
 
 export const SentenceModal = ({ visible, onClose }) => {
     const [deleted, setDeleted] = useState([]); // 삭제 문장 인덱스 저장
@@ -50,14 +51,6 @@ export const SentenceModal = ({ visible, onClose }) => {
         setTargetIndex(null);
         setPendingDeleteIndex(null);
     }
-
-    const truncate = (text, max = 20) => {
-        return text.length > max ? text.slice(0, max) + "..." : text;
-    }
-
-    // const handleDelete = (index) => { // 문장 삭제
-    //     if (!deleted.includes(index)) setDeleted([...deleted, index]);
-    // }
 
     return (
         <Modal
@@ -103,7 +96,7 @@ export const SentenceModal = ({ visible, onClose }) => {
                 <Dialog 
                     visible = { dialogVisible }
                     title = "즐겨찾기 문장 삭제"
-                    message = { `[${ truncate(targetSentence) }]` }
+                    message = { `[${truncateText(targetSentence)}]` }
                     subMessage = "즐겨찾기 한 문장을 삭제할까요?"
                     cancelText = "취소"
                     confirmText = "삭제하기"
