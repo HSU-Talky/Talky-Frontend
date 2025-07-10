@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: "#000000",
         fontSize: 22,
-        fontWeight: 600
+        fontWeight: 600,
+        lineHeight: 30
     }
 })
