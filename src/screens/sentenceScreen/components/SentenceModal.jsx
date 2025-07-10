@@ -9,48 +9,18 @@ import DELETED from "../../../assets/images/talktalk/deleted.png";
 import { SentenceRow } from "./SentenceRow";
 import Dialog from "../../../components/dialog/Dialog";
 import { truncateText } from "../../../utils/truncateText";
+import { useSentenceModal } from "../../../hooks/useSentenceModal";
 
-export const SentenceModal = ({ visible, onClose }) => {
-    const [deleted, setDeleted] = useState([]); // 삭제 문장 인덱스 저장
-    const [dialogVisible, setDialogVisible] = useState(false);
-    const [targetIndex, setTargetIndex] = useState(null);
-    const [pendingDeleteIndex, setPendingDeleteIndex] = useState(null);
-    const [selectedIndex, setSelectedIndex] = useState(null);
-
-    const [targetSentence, setTargetSentence] = useState("");
-
-    const sentences = [
-        "문장 1 문장 1 문장 1 문장 1 문장 1 문장 1 문장 1 문장 1",
-        "문장 2 문장 2 문장 2 문장 2 문장 2 문장 2 문장 2 문장 2",
-        "문장 3 문장 3 문장 3 문장 3 문장 3 문장 3 문장 3 문장 3",
-        "문장 4 문장 4 문장 4 문장 4 문장 4 문장 4 문장 4 문장 4",
-        "문장 5 문장 5 문장 5 문장 5 문장 5 문장 5 문장 5 문장 5",
-        "문장 6 문장 6 문장 6 문장 6 문장 6 문장 6 문장 6 문장 6",
-        "문장 7 문장 7 문장 7 문장 7 문장 7 문장 7 문장 7 문장 7",
-        "문장 8 문장 8 문장 8 문장 8 문장 8 문장 8 문장 8 문장 8",
-        "문장 9 문장 9 문장 9 문장 9 문장 9 문장 9 문장 9 문장 9",
-        "문장 10 문장 10 문장 10 문장 10 문장 10 문장 10 문장 10"
-    ];
-
-    const openDialog = (index) => {
-        setPendingDeleteIndex(index);
-        setTargetIndex(index);
-        setTargetSentence(sentences[index]);
-        setDialogVisible(true);
-    }
-
-    const handleRealDelete = () => {
-        if (targetIndex !== null && !deleted.includes(targetIndex)) setDeleted([...deleted, targetIndex]);
-
-        setDialogVisible(false);
-        setTargetIndex(null);
-    }
-
-    const handleCancel = () => {
-        setDialogVisible(false);
-        setTargetIndex(null);
-        setPendingDeleteIndex(null);
-    }
+export const SentenceModal = ({ visible, onClose, sentences  }) => {
+    const {
+        deleted,
+        dialogVisible,
+        pendingDeleteIndex,
+        targetSentence,
+        openDialog,
+        handleRealDelete,
+        handleCancel,
+    } = useSentenceModal(sentences);    
 
     return (
         <Modal
