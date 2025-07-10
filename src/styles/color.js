@@ -15,4 +15,5 @@ export const COLORS = {
 
   ERROR_NORMAL: "#FFAC90", // 오류, 삭제
   ERROR__CLICK: "#FF8860", // 오류, 삭제 클릭
+  ERROR_MESSAGE: "#FF6200", // 오류메세지
 };
