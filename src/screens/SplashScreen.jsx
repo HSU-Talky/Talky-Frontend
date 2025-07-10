@@ -4,7 +4,7 @@ import Logo from "../components/Logo";
 import UP from "../assets/splash/splash-up.png";
 import { COLORS } from "../styles/color";
 
-const SplashScreen = ({ onFinish }) => {
+const SplashScreen = ({ isLoggedIn, onFinish }) => {
   const { width, height } = Dimensions.get("window");
   const splashUpHeight = width * 0.5;
 
@@ -12,6 +12,7 @@ const SplashScreen = ({ onFinish }) => {
   const moveAnim = useRef(new Animated.Value(height)).current; // splash-up 시작 위치
   const fadeOutAnim = useRef(new Animated.Value(1)).current; // splash-up 투명도
   const logoTranslate = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current; // 로고 위치 이동
+  const logoScale = useRef(new Animated.Value(1)).current; // 로고 크기 조절
 
   useEffect(() => {
     const easing = Easing.out(Easing.ease);
@@ -44,12 +45,28 @@ const SplashScreen = ({ onFinish }) => {
       }),
     ]).start(() => {
       // 로고 위치 이동
-      Animated.timing(logoTranslate, {
-        toValue: { x: 0, y: -191 },
-        duration: 1000,
-        easing: Easing.out(Easing.ease),
-        useNativeDriver: true,
-      }).start(() => {
+      const animations = [
+        Animated.timing(logoTranslate, {
+          toValue: isLoggedIn ? { x: 0, y: -303 } : { x: 0, y: -191 },
+          duration: 1000,
+          easing,
+          useNativeDriver: true,
+        }),
+      ];
+
+      // 로고 크기 조절(로그인된 상태인 경우만) -> 약 0.5배 축소
+      if (isLoggedIn) {
+        animations.push(
+          Animated.timing(logoScale, {
+            toValue: 0.5,
+            duration: 1000,
+            easing,
+            useNativeDriver: true,
+          })
+        );
+      }
+
+      Animated.parallel(animations).start(() => {
         if (onFinish) onFinish();
       });
     });
@@ -73,7 +90,10 @@ const SplashScreen = ({ onFinish }) => {
       <Animated.View
         style={{
           opacity: fadeAnim,
-          transform: logoTranslate.getTranslateTransform(),
+          transform: [
+            ...logoTranslate.getTranslateTransform(),
+            { scale: logoScale },
+          ],
         }}
       >
         <Logo width="186.67" height="52.67" />

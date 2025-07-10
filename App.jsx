@@ -4,9 +4,15 @@ import SplashScreen from "./src/screens/SplashScreen";
 
 export default function App() {
   const [splashDone, setSplashDone] = useState(false);
+  const isLoggedIn = true; // 로그인여부: 테스트용
 
   if (!splashDone) {
-    return <SplashScreen onFinish={() => setSplashDone(true)} />;
+    return (
+      <SplashScreen
+        isLoggedIn={isLoggedIn}
+        onFinish={() => setSplashDone(true)}
+      />
+    );
   }
 
   return <RootNavigator />;
