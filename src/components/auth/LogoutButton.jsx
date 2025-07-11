@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import { COLORS } from "../../styles/color";
 
 const LogoutButton = () => {
   const handleLogout = () => {
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   button: {
     width: 85,
     height: 28,
-    backgroundColor: "#FFEC9F",
+    backgroundColor: COLORS.MAIN_YELLOW2,
     borderRadius: 33.33,
     justifyContent: "center",
     alignItems: "center",

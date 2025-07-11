@@ -1,11 +1,12 @@
 // 일반, 보호자 설정 기본박스
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { COLORS } from "../styles/color";
 
 const SettingBox = ({
   height = 200,
-  bgColor = "#FFEC9F",
-  titleBgColor = "#FFD321",
+  bgColor = COLORS.MAIN_YELLOW2,
+  titleBgColor = COLORS.MAIN_YELLOW3,
   title = "",
   children,
 }) => {
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 12,
     fontWeight: "500",
-    color: "#000",
+    color: COLORS.BLACK,
   },
   content: {
     // marginTop: 24,
