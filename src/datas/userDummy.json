@@ -1,0 +1,14 @@
+[
+  {
+    "id": "test1111",
+    "name": "수키",
+    "password": "pass1111",
+    "role": "user"
+  },
+  {
+    "id": "test2222",
+    "name": "홍길동",
+    "password": "pass2222",
+    "role": "guardian"
+  }
+]
