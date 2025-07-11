@@ -1,7 +1,7 @@
 // 일반, 보호자 설정 기본박스
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { COLORS } from "../styles/color";
+import { COLORS } from "../../styles/color";
 
 const SettingBox = ({
   height = 200,
