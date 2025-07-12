@@ -1,11 +1,19 @@
-import { Image, StyleSheet, Text, TextInput, View } from "react-native"
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import SettingBox from "../../../components/setting/SettingBox"
 import NameIdGroup from "../../../components/setting/NameIdGroup"
 import EditableField from "../../../components/setting/EditableField"
 
 import ACCOUNT from "../../../assets/images/guardian-setting/connetAccount.png"
+import { useState } from "react"
+import Dialog from "../../../components/dialog/Dialog"
 
 export const GuardianInfo = () => {
+    const [isRegistered, setIsRegistered] = useState(false);
+
+    const handleRegister = () => {
+        setIsRegistered(true);
+    }
+
     return (
         <SettingBox height = { 216 } title = "사용자 정보" bgColor = "#FFF3C7">
             <View style = { styles.content }>
@@ -24,9 +32,21 @@ export const GuardianInfo = () => {
                             placeholder = "일반 계정에 있는 고유 번호를 입력해 주세요"
                             placeholderTextColor = { "#C2C2C2" }
                         />
-                        <View style = { styles.registerBox }>
-                            <Text style = { styles.registerText }>등록</Text>
-                        </View>
+                        <TouchableOpacity 
+                            style = {[ 
+                                styles.registerBox,
+                                isRegistered ? styles.deleteBox : styles.registerBox
+                            ]}
+                            onPress = { handleRegister }
+                            activeOpacity = { 0.5 }
+                        >
+                            <Text style = {[ 
+                                styles.registerText,
+                                isRegistered ? styles.deleteText : styles.registerText
+                            ]}>
+                                { isRegistered ? "삭제" : "등록" }
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style = { styles.plusBox }>
@@ -34,7 +54,7 @@ export const GuardianInfo = () => {
                 </View>
             </View>
         </SettingBox> 
-    )
+            )
 }
 
 const styles = StyleSheet.create({
@@ -103,11 +123,19 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFD321"
     },
 
+    deleteBox: {
+        backgroundColor: "#9F9F9F"
+    },
+
     registerText: {
         color: "#9F9F9F",
         fontSize: 10,
         fontWeight: 400,
-        lineHeight: 12
+        lineHeight: 15
+    },
+
+    deleteText: {
+        color: "#FFFFFF"
     },
 
     plusBox: {
