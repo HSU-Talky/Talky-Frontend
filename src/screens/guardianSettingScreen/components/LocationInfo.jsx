@@ -1,18 +1,39 @@
-import { Image, StyleSheet, Text, View } from "react-native"
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import SettingBox from "../../../components/setting/SettingBox"
 
 import LOCATION from "../../../assets/images/talktalk/location.png"
+import { useState } from "react"
 
 export const LocationInfo = () => {
+    const [isToggled, setIsToggled] = useState(false);
+
+    const handleToggle = () => {
+        setIsToggled(prev => !prev);
+    }
+
     return (
-        <SettingBox height = { 148 } title = "위치 알림 서비스">
+        <SettingBox 
+            height = { 148 } 
+            title = "위치 알림 서비스"
+            bgColor = { isToggled ? "#FFEC9F" : "#FFF3C7" }
+        >
             <View style = { styles.content }>
                 <View style = { styles.notify }>
                     <Image source = { LOCATION } style = { styles.notifyImage }/>
                     <Text style = { styles.notifyText }>1시간마다 위치 알림 받기</Text>
-                    <View style = { styles.notifyToggle }>
-                        <View style = { styles.toggle } />
-                    </View>
+                    <TouchableOpacity 
+                        style = {[ 
+                            styles.notifyToggle,
+                            isToggled ? styles.notifyToggleOn : styles.notifyToggleOff
+                        ]}
+                        onPress = { handleToggle }
+                        activeOpacity = { 0.5 }
+                    >
+                        <View style = {[ 
+                            styles.toggle,
+                            isToggled ? styles.toggleOn : styles.toggleOff
+                        ]} />
+                    </TouchableOpacity>
                 </View>
                 <Text style = { styles.explain }>
                     {`위치 서비스 알림을 받기 위해서는\n텔레그램 활성화가 필요합니다`}
@@ -28,7 +49,6 @@ export const LocationInfo = () => {
 const styles = StyleSheet.create({
 
     content: {
-        display: "flex",
         justifyContent: "center",
         alignItems: "center",
         marginTop: 35,
@@ -36,7 +56,6 @@ const styles = StyleSheet.create({
     },
 
     notify: {
-        display: "flex",
         flexDirection: "row",
         alignItems: "center",
         gap: 13
@@ -62,17 +81,33 @@ const styles = StyleSheet.create({
         borderRadius: 42.11,
         display: "flex",
         justifyContent: "center",
-        alignItems: "flex-end"
+    },
+
+    notifyToggleOn: {
+        alignItems: "flex-end",
+        paddingRight: 2.53
+    },
+
+    notifyToggleOff: {
+        alignItems: "flex-start",
+        paddingLeft: 2.53
     },
     
     toggle: { 
         width: 21.05,
         height: 21.05,
-        backgroundColor: "#FFD321",
         borderWidth: 1,
-        borderColor: "#FFEC9F",
-        borderRadius: 84.21,
-        marginRight: 2.53
+        borderRadius: 84.21
+    },
+
+    toggleOn: {
+        backgroundColor: "#FFD321",
+        borderColor: "#FFEC9F"
+    },
+
+    toggleOff: {
+        backgroundColor: "#9F9F9F",
+        borderColor: "#D9D9D9"
     },
 
     explain: {
@@ -87,7 +122,6 @@ const styles = StyleSheet.create({
         height: 28,
         backgroundColor: "#FFFEF6",
         borderRadius: 33.33,
-        display: "flex",
         justifyContent: "center",
         alignItems: "center"
     },
