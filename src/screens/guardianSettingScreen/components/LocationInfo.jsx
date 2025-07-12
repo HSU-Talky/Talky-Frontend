@@ -1,5 +1,6 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { Image, StyleSheet, Text, View } from "react-native"
 import SettingBox from "../../../components/setting/SettingBox"
+import { ToggleComponent } from "./ToggleComponent"
 
 import LOCATION from "../../../assets/images/talktalk/location.png"
 import { useState } from "react"
@@ -21,19 +22,7 @@ export const LocationInfo = () => {
                 <View style = { styles.notify }>
                     <Image source = { LOCATION } style = { styles.notifyImage }/>
                     <Text style = { styles.notifyText }>1시간마다 위치 알림 받기</Text>
-                    <TouchableOpacity 
-                        style = {[ 
-                            styles.notifyToggle,
-                            isToggled ? styles.notifyToggleOn : styles.notifyToggleOff
-                        ]}
-                        onPress = { handleToggle }
-                        activeOpacity = { 0.5 }
-                    >
-                        <View style = {[ 
-                            styles.toggle,
-                            isToggled ? styles.toggleOn : styles.toggleOff
-                        ]} />
-                    </TouchableOpacity>
+                    <ToggleComponent value = { isToggled } onToggle = { handleToggle } />
                 </View>
                 <Text style = { styles.explain }>
                     {`위치 서비스 알림을 받기 위해서는\n텔레그램 활성화가 필요합니다`}
@@ -72,42 +61,6 @@ const styles = StyleSheet.create({
         fontWeight: 400,
         lineHeight: 20,
         color: "#2B2B2B"
-    },
-
-    notifyToggle: {
-        width: 48,
-        height: 24.42,
-        backgroundColor: "#FFFFFF",
-        borderRadius: 42.11,
-        display: "flex",
-        justifyContent: "center",
-    },
-
-    notifyToggleOn: {
-        alignItems: "flex-end",
-        paddingRight: 2.53
-    },
-
-    notifyToggleOff: {
-        alignItems: "flex-start",
-        paddingLeft: 2.53
-    },
-    
-    toggle: { 
-        width: 21.05,
-        height: 21.05,
-        borderWidth: 1,
-        borderRadius: 84.21
-    },
-
-    toggleOn: {
-        backgroundColor: "#FFD321",
-        borderColor: "#FFEC9F"
-    },
-
-    toggleOff: {
-        backgroundColor: "#9F9F9F",
-        borderColor: "#D9D9D9"
     },
 
     explain: {
