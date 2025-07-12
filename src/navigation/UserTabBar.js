@@ -32,7 +32,7 @@ export default function UserTabNavigator() {
         tabBarStyle: {
           height: 89,
           paddingTop: 10,
-          backgroundColor: COLORS.MAIN_YELLOW2,
+          backgroundColor: COLORS.MAIN_YELLOW1,
         },
         tabBarIcon: ({ focused }) => {
           let icon;

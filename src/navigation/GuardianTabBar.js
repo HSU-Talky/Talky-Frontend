@@ -32,7 +32,7 @@ const GuardianTabNavigator = () => {
         tabBarStyle: {
           height: 89,
           paddingTop: 10,
-          backgroundColor: COLORS.MAIN_YELLOW2,
+          backgroundColor: COLORS.MAIN_YELLOW,
         },
         tabBarIcon: ({ focused }) => {
           let icon;
