@@ -41,7 +41,9 @@ const EditableField = ({
             style={styles.input}
           />
         ) : (
-          <Text style={styles.text}>{value}</Text>
+          <Text style={[styles.text, !value && { color: COLORS.PLACE_HOLDER }]}>
+            {value || placeholder}
+          </Text>
         )}
 
         {/* 수정버튼 */}
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   text: {
-    fontSize: 12,
+    fontSize: 9,
     color: COLORS.SUB_BLACK,
     flex: 1,
   },

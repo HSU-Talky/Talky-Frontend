@@ -9,7 +9,12 @@ const UserSettingScreen = () => {
 
   return (
     <View>
-      <UserInfo name={name} onChange={setName} id={user.id} />
+      <UserInfo
+        name={name}
+        onChange={setName}
+        id={user.id}
+        unique={user.unique}
+      />
     </View>
   );
 };
