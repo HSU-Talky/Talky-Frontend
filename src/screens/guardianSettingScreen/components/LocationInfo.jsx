@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     notifyText: {
         fontSize: 16.29,
         fontWeight: 400,
-        lineHeight: 20
+        lineHeight: 20,
+        color: "#2B2B2B"
     },
 
     notifyToggle: {
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontWeight: 400,
         textAlign: "center",
+        color: "#4E4E4E"
     },
 
     button: {
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 14,
         fontWeight: 500,
-        lineHeight: 16
+        lineHeight: 16,
+        color: "#2B2B2B"
     }
 })
