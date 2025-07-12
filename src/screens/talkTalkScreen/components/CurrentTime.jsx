@@ -9,10 +9,9 @@ export default function CurrentTime() {
         const updateTime = () => {
             const now = new Date();
             const hour = now.getHours();
-            const minute = now.getMinutes();
-            const paddedMinutes = minute.toString().padStart(2, '0');
+            const minute = now.getMinutes().toString().padStart(2, '0');
 
-            setCurrentTime(`${ hour }:${ paddedMinutes }`);
+            setCurrentTime(`${ hour }:${ minute }`);
         };
 
         updateTime();
