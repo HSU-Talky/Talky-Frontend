@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import RoleSelector from "./RoleSelector";
 import SignInput from "../../../components/auth/SignInput";
 import SignButton from "../../../components/auth/SignButton";
 import ErrorIcon from "../../../components/auth/ErrorIcon";
 import { COLORS } from "../../../styles/color";
 import { validateSignup } from "../../../utils/validation";
+import Selector from "./Selector";
 
 const SignupForm = () => {
+  const roles = ["일반", "보호자"]; // 역할 목록
+
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -98,7 +100,13 @@ const SignupForm = () => {
 
       {/* 역할 */}
       <Text style={styles.text}>역할</Text>
-      <RoleSelector selectedRole={role} onSelect={setRole} />
+
+      <Selector
+        items={roles}
+        selectedValue={role}
+        onSelect={setRole}
+        placeholder="역할을 선택해 주세요"
+      />
       <View style={{ height: 92.67 }} />
       <SignButton
         title="회원가입"
