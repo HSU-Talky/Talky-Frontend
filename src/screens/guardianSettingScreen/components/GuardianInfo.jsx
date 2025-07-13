@@ -53,9 +53,9 @@ export const GuardianInfo = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style = { styles.plusBox }>
+                <TouchableOpacity style = { styles.plusBox }>
                     <Text style = { styles.plus }>+ 연결 계정 추가</Text>
-                </View>
+                </TouchableOpacity>
 
                 { showToast && (
                     <Toast
