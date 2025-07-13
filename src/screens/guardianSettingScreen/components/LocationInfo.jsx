@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native"
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import SettingBox from "../../../components/setting/SettingBox"
 import { ToggleComponent } from "./ToggleComponent"
 
@@ -27,9 +27,9 @@ export const LocationInfo = () => {
                 <Text style = { styles.explain }>
                     {`위치 서비스 알림을 받기 위해서는\n텔레그램 활성화가 필요합니다`}
                 </Text>
-                <View style = { styles.button }>
+                <TouchableOpacity style = { styles.button }>
                     <Text style = { styles.buttonText }>활성화 하러 가기</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         </SettingBox> 
     )
