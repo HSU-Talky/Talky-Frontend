@@ -5,15 +5,19 @@ import EditableField from "../../../components/setting/EditableField"
 
 import ACCOUNT from "../../../assets/images/guardian-setting/connetAccount.png"
 import { useState } from "react"
-import Dialog from "../../../components/dialog/Dialog"
+import { Toast } from "../../../components/input/Toast"
 
 export const GuardianInfo = () => {
     const [isRegistered, setIsRegistered] = useState(false);
+    const [showToast, setShowToast] = useState(false);
 
     const handleRegister = () => {
-        setIsRegistered(true);
-    }
-
+        if (!isRegistered) {
+            setIsRegistered(true);        
+            setShowToast(true);           
+        } 
+    };
+    
     return (
         <SettingBox height = { 216 } title = "사용자 정보" bgColor = "#FFF3C7">
             <View style = { styles.content }>
@@ -52,6 +56,13 @@ export const GuardianInfo = () => {
                 <View style = { styles.plusBox }>
                     <Text style = { styles.plus }>+ 연결 계정 추가</Text>
                 </View>
+
+                { showToast && (
+                    <Toast
+                        message = "연결 계정 등록 완료!"
+                        onHide = { () => setShowToast(false) }
+                    />
+                )}
             </View>
         </SettingBox> 
             )
