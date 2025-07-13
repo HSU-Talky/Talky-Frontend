@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
 import { LocationInfo } from "./components/LocationInfo";
 import { GuardianInfo } from "./components/GuardianInfo";
 
@@ -8,9 +8,9 @@ const GuardianSettingScreen = () => {
     <View style = { styles.container }>
       <LocationInfo />
       <GuardianInfo />
-      <View style = { styles.logoutButton }>
+      <TouchableOpacity style = { styles.logoutButton }>
         <Text style = { styles.logoutText }>로그아웃</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
