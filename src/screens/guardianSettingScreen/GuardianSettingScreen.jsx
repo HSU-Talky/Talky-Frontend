@@ -23,7 +23,6 @@ export default GuardianSettingScreen;
 const styles = StyleSheet.create({
   container: {
     height: 780,
-    display: "flex",
     flexDirection: "column",
     alignItems: "center",
     backgroundColor: "#FFFEF6",
@@ -34,7 +33,6 @@ const styles = StyleSheet.create({
   logoutButton: {
     width: 85,
     height: 28,
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FFEC9F",
@@ -44,6 +42,6 @@ const styles = StyleSheet.create({
   logoutText: {
     color: "#464646",
     fontSize: 12,
-    fontWeight: 400
+    fontWeight: "400"
   }
 })

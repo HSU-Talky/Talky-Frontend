@@ -26,8 +26,7 @@ const styles = StyleSheet.create({
         height: 24.42,
         backgroundColor: "#FFFFFF",
         borderRadius: 42.11,
-        display: "flex",
-        justifyContent: "center",
+        justifyContent: "center"
     },
 
     notifyToggleOn: {

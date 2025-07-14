@@ -82,20 +82,17 @@ export const GuardianInfo = () => {
 
 const styles = StyleSheet.create({
     content: {
-        display: "flex",
         justifyContent: "center",
         alignItems: "center",
         marginTop: 35
     },
 
     accountContent: {
-        display: "flex",
         flexDirection: "column",
         gap: 10
     },
 
     title: {
-        display: "flex",
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
@@ -112,7 +109,7 @@ const styles = StyleSheet.create({
     mainText: {
         color: "#2B2B2B",
         fontSize: 12,
-        fontWeight: 500
+        fontWeight: "500"
     },
 
     subText: {
@@ -122,7 +119,6 @@ const styles = StyleSheet.create({
     },
 
     plusBox: {
-        display: "flex",
         justifyContent: "center",
         alignItems: "center",
         width: 102,
@@ -137,7 +133,7 @@ const styles = StyleSheet.create({
     plus: {
         color: "#2B2B2B",
         fontSize: 12,
-        fontWeight: 400,
+        fontWeight: "400",
         lineHeight: 15
     }
 })
