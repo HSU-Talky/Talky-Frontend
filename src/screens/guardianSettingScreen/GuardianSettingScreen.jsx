@@ -1,17 +1,20 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, View, ScrollView } from "react-native";
 import { LocationInfo } from "./components/LocationInfo";
 import { GuardianInfo } from "./components/GuardianInfo";
 
 const GuardianSettingScreen = () => {
   return (
-    <View style = { styles.container }>
-      <LocationInfo />
-      <GuardianInfo />
-      <TouchableOpacity style = { styles.logoutButton }>
-        <Text style = { styles.logoutText }>로그아웃</Text>
-      </TouchableOpacity>
-    </View>
+    <ScrollView>
+      <View style = { styles.container }>
+        <LocationInfo />
+        <GuardianInfo />
+        <TouchableOpacity style = { styles.logoutButton }>
+          <Text style = { styles.logoutText }>로그아웃</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+    
   );
 };
 
