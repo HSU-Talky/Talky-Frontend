@@ -18,21 +18,36 @@ export const GuardianInfo = () => {
         handleCancel 
     } = useDialogOpen();
 
+    const [plus, setPlus] = useState([{ isRegistered: false }]);
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
+    const handleAddComponent = () => {
+        setPlus((prev) => [...prev, { isRegistered: false }]);
+    };
+
     const [isRegistered, setIsRegistered] = useState(false);
     const [showToast, setShowToast] = useState(false);
 
-    const handleRegister = () => {
-        if (!isRegistered) {
-            setIsRegistered(true);        
-            setShowToast(true);           
+    const handleRegister = (index) => {
+        const updated = [...plus];
+
+        if (!updated[index].isRegistered) {
+            updated[index].isRegistered = true;
+            setPlus(updated);           
+            setShowToast(true);
         } else {
+            setSelectedIndex(index);
             openDialog();
         }
     };
 
     const handleDeleteConfirm = () => {
-        setIsRegistered(false);      
-        handleRealDelete();         
+        if (selectedIndex === null) return;
+        const updated = [...plus];
+        updated.splice(selectedIndex, 1);
+        setPlus(updated);
+        setSelectedIndex(null);
+        handleRealDelete();       
     };
     
     return (
@@ -47,19 +62,20 @@ export const GuardianInfo = () => {
                             (일반 계정에 있는 고유 번호를 입력해 주세요)
                         </Text>
                     </View>
-                    <View style = { styles.input }>
-                        <TextInput 
-                            style = { styles.inputBox }
-                            placeholder = "일반 계정에 있는 고유 번호를 입력해 주세요"
-                            placeholderTextColor = { "#C2C2C2" }
-                        />
-                        <AccountComponent 
-                            isRegistered = { isRegistered }
-                            onPress = { handleRegister }
-                        />
-                    </View>
+
+                    { plus.map((component, index) => (
+                            <AccountComponent 
+                                key = { index }
+                                isRegistered = { component.isRegistered }
+                                onPress = { () => handleRegister(index) }
+                                onDeletePress = { () => {
+                                    setSelectedIndex(index);
+                                    openDialog();
+                                }}
+                            />
+                        ))}
                 </View>
-                <TouchableOpacity style = { styles.plusBox }>
+                <TouchableOpacity style = { styles.plusBox } onPress = { handleAddComponent }>
                     <Text style = { styles.plus }>+ 연결 계정 추가</Text>
                 </TouchableOpacity>
 
@@ -124,21 +140,6 @@ const styles = StyleSheet.create({
         color: "#464646",
         fontSize: 10,
         fontWeight: 400
-    },
-
-    input: {
-        display: "flex",
-        flexDirection: "row",
-        gap: 7,
-    },
-
-    inputBox: {
-        height: 20,
-        backgroundColor: "#FFFEF6",
-        borderRadius: 20,
-        fontSize: 12,
-        paddingVertical: 1,
-        paddingHorizontal: 12,
     },
 
     plusBox: {
