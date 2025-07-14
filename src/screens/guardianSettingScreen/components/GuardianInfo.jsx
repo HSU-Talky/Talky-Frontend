@@ -8,6 +8,7 @@ import ACCOUNT from "../../../assets/images/guardian-setting/connetAccount.png"
 import { useState } from "react"
 import { useDialogOpen } from "../../../hooks/useDialogOpen"
 import Dialog from "../../../components/dialog/Dialog"
+import { AccountComponent } from "./AccountComponent"
 
 export const GuardianInfo = () => {
     const { 
@@ -52,21 +53,10 @@ export const GuardianInfo = () => {
                             placeholder = "일반 계정에 있는 고유 번호를 입력해 주세요"
                             placeholderTextColor = { "#C2C2C2" }
                         />
-                        <TouchableOpacity 
-                            style = {[ 
-                                styles.registerBox,
-                                isRegistered ? styles.deleteBox : styles.registerBox
-                            ]}
+                        <AccountComponent 
+                            isRegistered = { isRegistered }
                             onPress = { handleRegister }
-                            activeOpacity = { 0.5 }
-                        >
-                            <Text style = {[ 
-                                styles.registerText,
-                                isRegistered ? styles.deleteText : styles.registerText
-                            ]}>
-                                { isRegistered ? "삭제" : "등록" }
-                            </Text>
-                        </TouchableOpacity>
+                        />
                     </View>
                 </View>
                 <TouchableOpacity style = { styles.plusBox }>
@@ -149,31 +139,6 @@ const styles = StyleSheet.create({
         fontSize: 12,
         paddingVertical: 1,
         paddingHorizontal: 12,
-    },
-
-    registerBox: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: 39,
-        height: 20,
-        borderRadius: 10,
-        backgroundColor: "#FFD321"
-    },
-
-    deleteBox: {
-        backgroundColor: "#9F9F9F"
-    },
-
-    registerText: {
-        color: "#9F9F9F",
-        fontSize: 10,
-        fontWeight: 400,
-        lineHeight: 15
-    },
-
-    deleteText: {
-        color: "#FFFFFF"
     },
 
     plusBox: {
