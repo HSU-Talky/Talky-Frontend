@@ -5,7 +5,7 @@ import SignButton from "../../../components/auth/SignButton";
 import ErrorIcon from "../../../components/auth/ErrorIcon";
 import { COLORS } from "../../../styles/color";
 import { validateSignup } from "../../../utils/validation";
-import Selector from "./Selector";
+import Selector from "../../../components/Selector";
 
 const SignupForm = () => {
   const roles = ["일반", "보호자"]; // 역할 목록

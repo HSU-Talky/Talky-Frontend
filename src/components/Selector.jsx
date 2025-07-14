@@ -8,8 +8,8 @@ import {
   Animated,
 } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import { getInputStyles } from "../../../utils/getInputStyles";
-import { COLORS } from "../../../styles/color";
+import { getInputStyles } from "../utils/getInputStyles";
+import { COLORS } from "../styles/color";
 
 const DEFAULT_ITEM_HEIGHT = 31.33; // 항목 하나 높이
 
