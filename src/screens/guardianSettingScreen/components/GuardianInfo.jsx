@@ -2,12 +2,21 @@ import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "reac
 import SettingBox from "../../../components/setting/SettingBox"
 import NameIdGroup from "../../../components/setting/NameIdGroup"
 import EditableField from "../../../components/setting/EditableField"
+import { Toast } from "../../../components/input/Toast"
 
 import ACCOUNT from "../../../assets/images/guardian-setting/connetAccount.png"
 import { useState } from "react"
-import { Toast } from "../../../components/input/Toast"
+import { useDialogOpen } from "../../../hooks/useDialogOpen"
+import Dialog from "../../../components/dialog/Dialog"
 
 export const GuardianInfo = () => {
+    const { 
+        dialogVisible, 
+        openDialog, 
+        handleRealDelete, 
+        handleCancel 
+    } = useDialogOpen();
+
     const [isRegistered, setIsRegistered] = useState(false);
     const [showToast, setShowToast] = useState(false);
 
@@ -15,7 +24,14 @@ export const GuardianInfo = () => {
         if (!isRegistered) {
             setIsRegistered(true);        
             setShowToast(true);           
-        } 
+        } else {
+            openDialog();
+        }
+    };
+
+    const handleDeleteConfirm = () => {
+        setIsRegistered(false);      
+        handleRealDelete();         
     };
     
     return (
@@ -63,6 +79,17 @@ export const GuardianInfo = () => {
                         onHide = { () => setShowToast(false) }
                     />
                 )}
+
+                <Dialog
+                    visible = { dialogVisible }
+                    title = "연결 계정 삭제"
+                    message = "연결 계정을 삭제하시겠습니까?"
+                    subMessage = "서비스 이용을 위해 연결 계정을 등록해 주세요."
+                    cancelText = "취소"
+                    confirmText = "삭제하기"
+                    onCancel = { handleCancel }
+                    onConfirm = { handleDeleteConfirm }
+                />
             </View>
         </SettingBox> 
             )
