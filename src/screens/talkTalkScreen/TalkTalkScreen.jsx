@@ -51,7 +51,7 @@ export default TalkTalkScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    height: 780,
     paddingTop: 40, 
     backgroundColor: "#FFFEF6",
     alignItems: "center", 
