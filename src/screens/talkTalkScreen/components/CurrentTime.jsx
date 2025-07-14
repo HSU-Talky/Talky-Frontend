@@ -16,7 +16,10 @@ export default function CurrentTime() {
 
         updateTime();
 
-        const interval = setInterval(updateTime, 1000);
+        const interval = setInterval(() => {
+            const now = new Date();
+            if (now.getSeconds() === 0) updateTime();
+        }, 1000);
         
         return () => clearInterval(interval);
     }, []);
