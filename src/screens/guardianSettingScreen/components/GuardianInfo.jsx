@@ -49,9 +49,11 @@ export const GuardianInfo = () => {
         setSelectedIndex(null);
         handleRealDelete();       
     };
+
+    const dynamicHeight = 216 + (plus.length - 1) * 30;
     
     return (
-        <SettingBox height = { 216 } title = "사용자 정보" bgColor = "#FFF3C7">
+        <SettingBox height = { dynamicHeight } title = "사용자 정보" bgColor = "#FFF3C7">
             <View style = { styles.content }>
                 <NameIdGroup />
                 <View style = { styles.accountContent }>
