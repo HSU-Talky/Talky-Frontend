@@ -9,8 +9,6 @@ import { useGuardianSetting } from "../../../hooks/useGurdianSetting"
 
 import ACCOUNT from "../../../assets/images/guardian-setting/connetAccount.png"
 
-import { useState } from "react"
-
 export const GuardianInfo = () => {
     const { 
         dialogVisible, 
