@@ -22,6 +22,7 @@ export const GuardianInfo = () => {
     const [selectedIndex, setSelectedIndex] = useState(null);
 
     const handleAddComponent = () => {
+        if (plus.length >= 5) return;
         setPlus((prev) => [...prev, { isRegistered: false }]);
     };
 
@@ -42,7 +43,7 @@ export const GuardianInfo = () => {
     };
 
     const handleDeleteConfirm = () => {
-        if (selectedIndex === null) return;
+        if (selectedIndex === null || plus.length <= 1) return;
         const updated = [...plus];
         updated.splice(selectedIndex, 1);
         setPlus(updated);
