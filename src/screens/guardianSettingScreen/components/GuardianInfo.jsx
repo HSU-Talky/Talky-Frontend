@@ -1,14 +1,15 @@
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import SettingBox from "../../../components/setting/SettingBox"
 import NameIdGroup from "../../../components/setting/NameIdGroup"
-import EditableField from "../../../components/setting/EditableField"
 import { Toast } from "../../../components/input/Toast"
-
-import ACCOUNT from "../../../assets/images/guardian-setting/connetAccount.png"
-import { useState } from "react"
 import { useDialogOpen } from "../../../hooks/useDialogOpen"
 import Dialog from "../../../components/dialog/Dialog"
 import { AccountComponent } from "./AccountComponent"
+import { useGuardianSetting } from "../../../hooks/useGurdianSetting"
+
+import ACCOUNT from "../../../assets/images/guardian-setting/connetAccount.png"
+
+import { useState } from "react"
 
 export const GuardianInfo = () => {
     const { 
@@ -18,41 +19,18 @@ export const GuardianInfo = () => {
         handleCancel 
     } = useDialogOpen();
 
-    const [plus, setPlus] = useState([{ isRegistered: false }]);
-    const [selectedIndex, setSelectedIndex] = useState(null);
+    const {
+        plus,
+        selectedIndex,
+        showToast,
+        setShowToast,
+        handleAddComponent,
+        handleRegister,
+        handleDeleteConfirm,
+        dynamicHeight,
+        setSelectedIndex
+    } = useGuardianSetting(openDialog, handleRealDelete);
 
-    const handleAddComponent = () => {
-        if (plus.length >= 5) return;
-        setPlus((prev) => [...prev, { isRegistered: false }]);
-    };
-
-    const [isRegistered, setIsRegistered] = useState(false);
-    const [showToast, setShowToast] = useState(false);
-
-    const handleRegister = (index) => {
-        const updated = [...plus];
-
-        if (!updated[index].isRegistered) {
-            updated[index].isRegistered = true;
-            setPlus(updated);           
-            setShowToast(true);
-        } else {
-            setSelectedIndex(index);
-            openDialog();
-        }
-    };
-
-    const handleDeleteConfirm = () => {
-        if (selectedIndex === null || plus.length <= 1) return;
-        const updated = [...plus];
-        updated.splice(selectedIndex, 1);
-        setPlus(updated);
-        setSelectedIndex(null);
-        handleRealDelete();       
-    };
-
-    const dynamicHeight = 216 + (plus.length - 1) * 30;
-    
     return (
         <SettingBox height = { dynamicHeight } title = "사용자 정보" bgColor = "#FFF3C7">
             <View style = { styles.content }>

@@ -1,10 +1,4 @@
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
-import EditableField from "../../../components/setting/EditableField"
-import { Toast } from "../../../components/input/Toast"
-import { useDialogOpen } from "../../../hooks/useDialogOpen"
-import Dialog from "../../../components/dialog/Dialog"
-
-import { useState } from "react"
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 
 export const AccountComponent = ({ isRegistered, onPress }) => {
     return (
