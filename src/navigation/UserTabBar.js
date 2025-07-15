@@ -76,7 +76,13 @@ export default function UserTabNavigator() {
           headerRight: () => <SosCall />,
         }}
       />
-      <Tab.Screen name="UserSetting" component={UserSettingScreen} />
+      <Tab.Screen
+        name="UserSetting"
+        component={UserSettingScreen}
+        options={{
+          headerRight: () => <SosCall />,
+        }}
+      />
     </Tab.Navigator>
   );
 }
