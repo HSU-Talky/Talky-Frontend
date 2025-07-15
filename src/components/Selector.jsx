@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { getInputStyles } from "../utils/getInputStyles";
+import { getDropdownBgColor } from "../utils/getDropdownBgColor";
 import { COLORS } from "../styles/color";
 
 const DEFAULT_ITEM_HEIGHT = 31.33; // 항목 하나 높이
@@ -20,14 +21,18 @@ const Selector = ({
   placeholder = "선택",
   itemHeight = DEFAULT_ITEM_HEIGHT,
   width = "242.67",
+  variant = "default",
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
   const { backgroundColor, iconColor } = getInputStyles(
     isFocused,
-    selectedValue || ""
+    selectedValue || "",
+    false,
+    variant
   );
+  const dropdownBgColor = getDropdownBgColor(variant);
 
   // 애니메이션 초기값 0
   const dropdownHeight = useRef(new Animated.Value(0)).current;
@@ -70,7 +75,14 @@ const Selector = ({
 
       {/*  선택 항목 dropdown */}
       <Animated.View
-        style={[styles.dropdown, { width: width - 10, height: dropdownHeight }]}
+        style={[
+          styles.dropdown,
+          {
+            width: width - 10,
+            height: dropdownHeight,
+            backgroundColor: dropdownBgColor,
+          },
+        ]}
       >
         {items.map((item) => {
           const isSelected = selectedValue === item;
@@ -120,7 +132,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     overflow: "hidden",
     top: 29.33,
-    backgroundColor: COLORS.MAIN_YELLOW1,
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
     borderBottomLeftRadius: 3.33,
