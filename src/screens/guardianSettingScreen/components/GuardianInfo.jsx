@@ -27,6 +27,7 @@ export const GuardianInfo = () => {
         handleAddComponent,
         handleRegister,
         handleDeleteConfirm,
+        handleChange,
         dynamicHeight,
         setSelectedIndex
     } = useGuardianSetting(openDialog, handleRealDelete);
@@ -47,8 +48,10 @@ export const GuardianInfo = () => {
                     {/* 연결 계정 리스트 반복 렌더링 */}
                     { plus.map((component, index) => (
                             <AccountComponent 
-                                key = { index }
+                                key = { component.id }
+                                value = { component.value }
                                 isRegistered = { component.isRegistered }
+                                onChangeText = { (text) => handleChange(index, text) }
                                 onPress = { () => handleRegister(index) }
                                 onDeletePress = { () => {
                                     setSelectedIndex(index);

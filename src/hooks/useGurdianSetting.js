@@ -1,13 +1,17 @@
 import { useState } from "react"
 
 export const useGuardianSetting = (openDialog, handleRealDelete) => {
-    const [plus, setPlus] = useState([{ isRegistered: false }]);
+    const [plus, setPlus] = useState([{ id: Date.now(), isRegistered: false, value: "" }]);
     const [selectedIndex, setSelectedIndex] = useState(null);
     const [showToast, setShowToast] = useState(false);
 
+    // 추가 시 id 부여
     const handleAddComponent = () => {
         if (plus.length >= 5) return;
-        setPlus((prev) => [...prev, { isRegistered: false }]);
+        setPlus((prev) => [
+            ...prev,
+            { id: Date.now() + Math.random(), isRegistered: false, value: "" }
+        ]);
     };
 
     const handleRegister = (index) => {
@@ -24,12 +28,16 @@ export const useGuardianSetting = (openDialog, handleRealDelete) => {
     };
 
     const handleDeleteConfirm = () => {
-        if (selectedIndex === null || plus.length <= 1) return;
-        const updated = [...plus];
-        updated.splice(selectedIndex, 1);
-        setPlus(updated);
-        setSelectedIndex(null);
-        handleRealDelete();       
+        setPlus(prev => prev.filter((_, i) => i !== selectedIndex));
+        handleRealDelete(); 
+    };
+
+    const handleChange = (index, text) => {
+        setPlus(prev => {
+            const updated = [...prev];
+            updated[index].value = text;
+            return updated;
+        });
     };
 
     const dynamicHeight = 216 + (plus.length - 1) * 30;
@@ -44,6 +52,7 @@ export const useGuardianSetting = (openDialog, handleRealDelete) => {
         handleAddComponent,
         handleRegister,
         handleDeleteConfirm,
+        handleChange,
         dynamicHeight,
     };
 }

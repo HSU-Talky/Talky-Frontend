@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 
 {/* isRegisterd: 등록 여부, onPress: 등록 삭제 버튼 클릭 시 실행 함수 */}
-export const AccountComponent = ({ isRegistered, onPress }) => {
+export const AccountComponent = ({ value, onChangeText, isRegistered, onPress }) => {
     return (
         <View style = { styles.container }>
             <View style = { styles.input }>
@@ -18,6 +18,8 @@ export const AccountComponent = ({ isRegistered, onPress }) => {
                 ]}
                 onPress = { onPress }
                 activeOpacity = { 0.5 }
+                value = { value }
+                onChangeText = { onChangeText }
             >
                 <Text style = {[ 
                     styles.registerText,
