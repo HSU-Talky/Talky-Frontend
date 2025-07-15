@@ -2,6 +2,7 @@ import { StyleSheet, TouchableOpacity, View } from "react-native"
 
 import { useState } from "react"
 
+{/* value: 현재 토글 상태, onToggle: 토글 상태 변경 시 호출 함수 */}
 export const ToggleComponent = ({ value, onToggle }) => {
     return (
         <TouchableOpacity 

@@ -10,13 +10,15 @@ import { useGuardianSetting } from "../../../hooks/useGurdianSetting"
 import ACCOUNT from "../../../assets/images/guardian-setting/connetAccount.png"
 
 export const GuardianInfo = () => {
-    const { 
+    // 연결 계정 삭제 다이얼로그 커스텀 훅
+    const {
         dialogVisible, 
         openDialog, 
         handleRealDelete, 
         handleCancel 
     } = useDialogOpen();
 
+    // 연결 계정 관리 커스텀 훅
     const {
         plus,
         selectedIndex,
@@ -42,6 +44,7 @@ export const GuardianInfo = () => {
                         </Text>
                     </View>
 
+                    {/* 연결 계정 리스트 반복 렌더링 */}
                     { plus.map((component, index) => (
                             <AccountComponent 
                                 key = { index }
@@ -58,13 +61,15 @@ export const GuardianInfo = () => {
                     <Text style = { styles.plus }>+ 연결 계정 추가</Text>
                 </TouchableOpacity>
 
+                {/* 등록 성공 토스트 메시지 */}
                 { showToast && (
                     <Toast
                         message = "연결 계정 등록 완료!"
                         onHide = { () => setShowToast(false) }
                     />
                 )}
-
+                
+                {/* 연결 계정 삭제 다이얼로그 */}
                 <Dialog
                     visible = { dialogVisible }
                     title = "연결 계정 삭제"

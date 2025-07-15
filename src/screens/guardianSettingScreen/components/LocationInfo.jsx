@@ -6,10 +6,10 @@ import LOCATION from "../../../assets/images/talktalk/location.png"
 import { useState } from "react"
 
 export const LocationInfo = () => {
-    const [isToggled, setIsToggled] = useState(false);
+    const [isToggled, setIsToggled] = useState(false); // 위치 알림 토글 상태 관리
 
     const handleToggle = () => {
-        setIsToggled(prev => !prev);
+        setIsToggled(prev => !prev); // 토글 상태 반전
     }
 
     return (

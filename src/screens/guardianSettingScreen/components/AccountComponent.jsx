@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 
+{/* isRegisterd: 등록 여부, onPress: 등록 삭제 버튼 클릭 시 실행 함수 */}
 export const AccountComponent = ({ isRegistered, onPress }) => {
     return (
         <View style = { styles.container }>
@@ -13,14 +14,14 @@ export const AccountComponent = ({ isRegistered, onPress }) => {
             <TouchableOpacity 
                 style = {[ 
                     styles.registerBox,
-                    isRegistered ? styles.deleteBox : styles.registerBox
+                    isRegistered ? styles.deleteBox : styles.registerBox // 등록 여부에 따라 스타일 변경
                 ]}
                 onPress = { onPress }
                 activeOpacity = { 0.5 }
             >
                 <Text style = {[ 
                     styles.registerText,
-                    isRegistered ? styles.deleteText : styles.registerText
+                    isRegistered ? styles.deleteText : styles.registerText // 등록 여부에 따라 스타일 변경
                 ]}>
                     { isRegistered ? "삭제" : "등록" }
                 </Text>
@@ -36,12 +37,12 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        display: "flex",
         flexDirection: "row",
         gap: 7,
     },
 
     inputBox: {
+        width: 240,
         height: 20,
         backgroundColor: "#FFFEF6",
         borderRadius: 20,
@@ -51,7 +52,6 @@ const styles = StyleSheet.create({
     },
 
     registerBox: {
-        display: "flex",
         justifyContent: "center",
         alignItems: "center",
         width: 39,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     registerText: {
         color: "#9F9F9F",
         fontSize: 10,
-        fontWeight: 400,
+        fontWeight: "400",
         lineHeight: 15
     },
 
