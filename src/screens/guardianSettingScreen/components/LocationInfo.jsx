@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     content: {
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 35,
+        marginTop: 15,
         gap: 8
     },
 

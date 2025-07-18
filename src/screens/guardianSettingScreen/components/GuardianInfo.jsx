@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     content: {
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 35
+        marginTop: 10
     },
 
     accountContent: {
