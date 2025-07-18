@@ -9,10 +9,12 @@ export const COLORS = {
   BLACK: "#2B2B2B",
   WHITE: "#FFFFFF",
   SUB_BLACK: "#464646",
+  PLACE_HOLDER: "#B1B1B1",
 
   CANCLE_NORMAL: "#E5E5E5", // 취소
   CANCLE_CLICK: "#8B8B8B", // 취소 클릭
 
   ERROR_NORMAL: "#FFAC90", // 오류, 삭제
   ERROR__CLICK: "#FF8860", // 오류, 삭제 클릭
+  ERROR_MESSAGE: "#FF6200", // 오류메세지
 };
