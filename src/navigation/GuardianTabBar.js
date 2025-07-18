@@ -32,7 +32,9 @@ const GuardianTabNavigator = () => {
         tabBarStyle: {
           height: 89,
           paddingTop: 10,
-          backgroundColor: COLORS.MAIN_YELLOW2,
+          backgroundColor: COLORS.BACKGROUND,
+          borderTopWidth: 0.5,
+          borderColor: "#FFEC9F",
         },
         tabBarIcon: ({ focused }) => {
           let icon;
@@ -48,7 +50,7 @@ const GuardianTabNavigator = () => {
           return (
             <View
               style={{
-                backgroundColor: focused ? "#FFFFFFB3" : "transparent",
+                backgroundColor: focused ? "#FFD32133" : "transparent",
                 padding: 2.6,
                 borderRadius: 10,
               }}
