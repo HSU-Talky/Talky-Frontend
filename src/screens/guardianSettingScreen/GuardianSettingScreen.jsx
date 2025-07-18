@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity, StyleSheet, Text, View, ScrollView } from "react-native";
 import { LocationInfo } from "./components/LocationInfo";
 import { GuardianInfo } from "./components/GuardianInfo";
+import LogoutButton from "../../components/auth/LogoutButton";
 
 const GuardianSettingScreen = () => {
   return (
@@ -9,9 +10,7 @@ const GuardianSettingScreen = () => {
       <View style = { styles.container }>
         <LocationInfo />
         <GuardianInfo />
-        <TouchableOpacity style = { styles.logoutButton }>
-          <Text style = { styles.logoutText }>로그아웃</Text>
-        </TouchableOpacity>
+        <LogoutButton />
       </View>
     </ScrollView>
     
