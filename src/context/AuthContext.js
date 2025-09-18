@@ -8,15 +8,13 @@ export const AuthProvider = ({ children }) => {
   const [userType, setUserType] = useState(null);
 
   useEffect(() => {
-    const loadAuthData = async () => {
-      const token = await AsyncStorage.getItem("idtoken");
-      const storedUserType = await AsyncStorage.getItem("userType");
-      if (token) {
-        setIsLoggedIn(true);
-        setUserType(storedUserType);
-      }
+    const resetAuthData = async () => {
+      await AsyncStorage.removeItem("idtoken");
+      await AsyncStorage.removeItem("userType");
+      setIsLoggedIn(false);
+      setUserType(null);
     };
-    loadAuthData();
+    resetAuthData();
   }, []);
 
   return (
